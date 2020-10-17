@@ -95,17 +95,15 @@ nnoremap <leader>( viw<esc>a)<esc>hbi(<esc>lel
 " 快速打开~/.bash_profile
 nnoremap <leader>eb :vsplit ~/.bash_profile<cr>
 nnoremap <leader>sb :!source ~/.bash_profile<cr>
-" 快速打开~/.zshrc
-nnoremap <leader>ez :vsplit ~/.zshrc<cr>
-nnoremap <leader>sb :source ~/.zshrc<cr>
 
+" 快速打开~/.zshrc
+command! ConfigEZ execute ":vsplit ~/.zshrc"
+command! ReloadEZ execute "source ~/.zshrc"
 
 "快速打开.vimrc
-" nnoremap <leader>ev :vsplit $MYVIMRC<cr>
 command! Config execute ":vsplit $MYVIMRC"
 
 "重新加载vimrc
-" nnoremap <leader>sv :source $MYVIMRC<cr>
 command! Reload execute "source $MYVIMRC"
 
 
