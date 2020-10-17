@@ -1,3 +1,4 @@
+" 必须放置在最顶部，因为会改变之后的代码模式
 set nocompatible "使用非兼容模式，就不会默认为vi模式了"
 
 "单词修复与扩展"
@@ -179,10 +180,6 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 " -----------------------------------------------
 " 代码注释
 " -----------------------------------------------
-"  <leader>cc 加注释
-"  <leader>cu 揭开注视
-"  <leader>c<space> 加上/解开注释，智能判断
-"  <leader>cy 先复制， 在注释（p可以进行黏贴
 Plug 'scrooloose/nerdcommenter'
 
 let g:NERDSpaceDelims = 1
@@ -199,25 +196,15 @@ let g:NERDDefaultNesting = 1
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
-"目录级搜索
-Plug 'kien/ctrlp.vim'
-"快捷键
-let g:ctrlp_map = '<Leader>p'
-let g:ctrlp_cmd = 'CtrlP'
-" 设置搜索时忽略的文件
-let g:ctrlp_custom_ignore = {
-			\ 'dir': '\v[\/](.git|.hg|.svn|.rvm|node_modules|Go2Shell.app)$',
-			\ 'file': '\v\.(DS_Store|swp|exe|so|dll|zip|tar|tar.gz|pyc)$',
-			\ }
-"修改QuickFix窗口现实的最大条目数
-let g:ctrlp_max_height = 15
-let g:ctrlp_match_window_reversed = 0
+" linux fzf搜索
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
-"使用按文件名搜索，而不是默认的按路径名
-let g:ctrlp_follow_symlinks = 1
-"自定义搜索列表的提示符
-let g:ctrlp_line_prefix = '♪ '
-
+let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git/*"'
+nnoremap // :BLines!<CR>
+nnoremap ?? :Rg!<CR>
+nnoremap <leader>p :Files!<CR>
+nnoremap cc :Commands!<CR>
 
 "文件树
 Plug 'scrooloose/nerdtree'
