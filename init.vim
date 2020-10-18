@@ -161,11 +161,25 @@ let &t_EI.="\e[1 q"
 
 "加载插件
 call plug#begin('~/.vim/plugged')
+
 " 开始菜单
 Plug 'mhinz/vim-startify'
 
-" Ack代替grep
-Plug 'mileszs/ack.vim'
+"""
+" CtrlSF
+"""
+Plug 'dyng/ctrlsf.vim'
+" https://github.com/dyng/ctrlsf.vim
+
+" Set "<leader>s" to substitute the word under the cursor. Works great with
+" CtrlSF!
+nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
+
+" Set up some handy CtrlSF bindings
+nmap <leader>a :CtrlSF -R ""<Left>
+nmap <leader>A <Plug>CtrlSFCwordPath -W<CR>
+nmap <leader>c :CtrlSFFocus<CR>
+nmap <leader>C :CtrlSFToggle<CR>
 
 " 括号自动环绕
 Plug 'tpope/vim-surround'
@@ -196,14 +210,29 @@ let g:NERDDefaultNesting = 1
 Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
+
+"""
+" FZF
+"""
+
 " linux fzf搜索
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --glob "!.git/*"'
+" 自动寻找目录根路径
+function! s:find_git_root()
+	echo 'find root'
+  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+endfunction
+command! ProjectFiles execute 'Files' s:find_git_root()
+
+let $FZF_DEFAULT_COMMAND = 'rg --files --case-sensitive --glob "!.git/*"'
 nnoremap // :BLines!<CR>
 nnoremap ?? :Rg!<CR>
+" 当前路径PWD找
 nnoremap <leader>p :Files!<CR>
+" 当前项目找
+nnoremap <leader>P :Files!<CR>
 nnoremap cc :Commands!<CR>
 
 "文件树
@@ -316,8 +345,8 @@ augroup end
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
+" xmap <leader>a  <Plug>(coc-codeaction-selected)
+" nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
 nmap <leader>ac  <Plug>(coc-codeaction)
@@ -630,4 +659,3 @@ except Exception, e:
 EOF
 endfunction
 augroup END
-
