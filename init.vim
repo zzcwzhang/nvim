@@ -18,6 +18,8 @@ set nocompatible "使用非兼容模式，就不会默认为vi模式了"
 :iabbrev stirng string
 :iabbrev flaot float
 
+nnoremap <A-t> :echo 'hello'
+
 
 " 基础配置 ---------------------- {{{
 " 重要的全局配置
@@ -181,7 +183,9 @@ nmap <leader>A <Plug>CtrlSFCwordPath -W<CR>
 nmap <leader>c :CtrlSFFocus<CR>
 nmap <leader>C :CtrlSFToggle<CR>
 
+" -----------------------------------------------
 " 括号自动环绕
+" -----------------------------------------------
 Plug 'tpope/vim-surround'
 
 " If you want :UltiSnipsEdit to split your window.
@@ -190,6 +194,21 @@ let g:UltiSnipsEditSplit="vertical"
 Plug 'styled-components/vim-styled-components'
 autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
 autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
+
+" -----------------------------------------------
+" 多重选择
+" -----------------------------------------------
+Plug 'terryma/vim-multiple-cursors'
+let g:multi_cursor_select_all_word_key = '<C-a>'
+" Default mapping
+" let g:multi_cursor_start_word_key      = '<C-n>'
+" let g:multi_cursor_select_all_word_key = '<A-n>'
+" let g:multi_cursor_start_key           = 'g<C-n>'
+" let g:multi_cursor_select_all_key      = 'g<A-n>'
+" let g:multi_cursor_next_key            = '<C-n>'
+" let g:multi_cursor_prev_key            = '<C-p>'
+" let g:multi_cursor_skip_key            = '<C-x>'
+" let g:multi_cursor_quit_key            = '<Esc>'
 
 " -----------------------------------------------
 " 代码注释
@@ -211,9 +230,9 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
 
-"""
+" -----------------------------------------------
 " FZF
-"""
+" -----------------------------------------------
 
 " linux fzf搜索
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -235,7 +254,9 @@ nnoremap <leader>p :Files!<CR>
 nnoremap <leader>P :Files!<CR>
 nnoremap cc :Commands!<CR>
 
-"文件树
+" -----------------------------------------------
+" 文件树
+" -----------------------------------------------
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -265,7 +286,9 @@ let g:nerdtree_tabs_open_on_console_startup=1 "在终端启动vim时共享NERDTr
 " let g:UltiSnipsJumpForwardTrigger="<c-space>"
 " let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
-
+" -----------------------------------------------
+" COC 语法自动补全
+" -----------------------------------------------
 Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 
 if has("patch-8.1.1564")
@@ -402,37 +425,29 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>t
 
 
-Plug 'isRuslan/vim-es6'
-Plug 'groenewege/vim-less'
-
-"Go 代码高亮和检测
-Plug 'Blackrush/vim-gocode'
-
-"html xml自动闭合标签
+" -----------------------------------------------
+" html xml自动闭合标签
+" -----------------------------------------------
 Plug 'docunext/closetag.vim'
-"swift
-Plug 'toyamarinyon/vim-swift'
-"java
-Plug 'vim-scripts/javacomplete'
-"nodeJs
-Plug 'jamescarr/snipmate-nodejs'
-Plug 'guileen/vim-node'
 
 
-"Git配置"
+" -----------------------------------------------
+" Git配置"
+" -----------------------------------------------
 Plug 'tpope/vim-fugitive'
-" Plug 'airblade/vim-gitgutter.git'
 
-"Tagbar
+" -----------------------------------------------
+" Tagbar
+" -----------------------------------------------
 Plug 'majutsushi/tagbar'
 let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:tagbar_width=30
 let g:tagbar_right=1
 nnoremap <F9> :TagbarToggle<CR>
 
-
-"符号自动环绕
-" Plug 'tpope/vim-surround'
+"TagBar配置
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+let g:tagbar_ctags_bin='ctags'
 
 "代码自动格式化
 "pydiction 1.2 python auto complete
@@ -440,14 +455,12 @@ let g:pydiction_location = '~/.vim/tools/pydiction/complete-dict'
 ""defalut g:pydiction_menu_height == 15
 "let g:pydiction_menu_height = 20"
 
+" -----------------------------------------------
 " 状态条
+" -----------------------------------------------
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-"TagBar配置
-nnoremap <Leader>md :TagbarToggle<CR>
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-let g:tagbar_ctags_bin='ctags'
 
 "注释函数"
 function! Vimnote(notetext)
