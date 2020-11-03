@@ -199,7 +199,7 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 " 多重选择
 " -----------------------------------------------
 Plug 'terryma/vim-multiple-cursors'
-let g:multi_cursor_select_all_word_key = '<C-a>'
+let g:multi_cursor_select_all_word_key = '<C-s>'
 " Default mapping
 " let g:multi_cursor_start_word_key      = '<C-n>'
 " let g:multi_cursor_select_all_word_key = '<A-n>'
@@ -349,7 +349,7 @@ function! s:show_documentation()
 endfunction
 
 " Highlight the symbol and its references when holding the cursor.
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
@@ -363,7 +363,7 @@ augroup mygroup
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
   " Update signature help on jump placeholder.
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+  " autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
 
 " Applying codeAction to the selected region.
