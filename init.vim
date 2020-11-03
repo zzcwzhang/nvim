@@ -209,6 +209,12 @@ let g:multi_cursor_select_all_word_key = '<C-s>'
 " let g:multi_cursor_prev_key            = '<C-p>'
 " let g:multi_cursor_skip_key            = '<C-x>'
 " let g:multi_cursor_quit_key            = '<Esc>'
+"
+
+" -----------------------------------------------
+" Buffer管理器
+" -----------------------------------------------
+ Plug 'jlanzarotta/bufexplorer'
 
 " -----------------------------------------------
 " 代码注释
