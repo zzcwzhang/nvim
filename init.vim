@@ -257,7 +257,8 @@ nnoremap ?? :Rg!<CR>
 " 当前路径PWD找
 nnoremap <leader>p :Files!<CR>
 " 当前项目找
-nnoremap <leader>P :Files!<CR>
+nnoremap <leader>P :GFiles!<CR>
+nnoremap <leader>g :GFiles?<CR>
 nnoremap cc :Commands!<CR>
 
 " -----------------------------------------------

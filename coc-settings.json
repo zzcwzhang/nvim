@@ -1,5 +1,8 @@
 {
   "suggest.noselect": false,
+  "suggest.floatEnable": false,
+  "signature.target": "echo",
+  "coc.preferences.hoverTarget": "echo",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "json",
