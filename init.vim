@@ -18,9 +18,7 @@ set nocompatible "使用非兼容模式，就不会默认为vi模式了"
 :iabbrev stirng string
 :iabbrev flaot float
 
-nnoremap <A-t> :echo 'hello'
-
-
+set backupcopy=yes
 " 基础配置 ---------------------- {{{
 " 重要的全局配置
 set hidden
@@ -79,6 +77,7 @@ nnoremap <Right> gt
 set foldlevel=99
 set nocompatible              " required
 "开启文件类型匹配"
+"
 
 
 augroup filetype_vim
@@ -86,18 +85,6 @@ augroup filetype_vim
 	autocmd FileType vim setlocal foldmethod=marker
 augroup END
 
-
-"单词包围,自动添加"('等符号在一个单词左右
-nnoremap <leader>" viw<esc>a"<esc>hbi"<esc>lel
-nnoremap <leader>' viw<esc>a'<esc>hbi'<esc>lel
-nnoremap <leader>( viw<esc>a)<esc>hbi(<esc>lel
-
-"快速编写自定义宏"
-" nnoremap <leader>m  :<c-u><c-r><c-r>='let @'. v:register .' = '. string(getreg(v:register))<cr><c-f><left>
-"
-" 快速打开~/.bash_profile
-nnoremap <leader>eb :vsplit ~/.bash_profile<cr>
-nnoremap <leader>sb :!source ~/.bash_profile<cr>
 
 " 快速打开~/.zshrc
 command! ConfigEZ execute ":vsplit ~/.zshrc"
@@ -109,12 +96,6 @@ command! Config execute ":vsplit $MYVIMRC"
 "重新加载vimrc
 command! Reload execute "source $MYVIMRC"
 
-
-"快速打开百度
-nnoremap <Leader>bd :!python2 /Users/apple/baidu.py<cr>
-
-"使用有道查找当前光标单词
-nnoremap <Leader>yd :!python2 /Users/apple/youdao.py <cword><cr>
 
 "Y复制到系统粘贴板
 vnoremap gy "+y
@@ -152,6 +133,10 @@ augroup base
 	autocmd InsertEnter,WinLeave * set nocursorline
 augroup END
 
+
+" 快速打印当前文件路径
+command! Pwd :call append(line('.'), expand('%'))<CR>
+
 "到同名后缀文件"
 
 "光标配置
@@ -164,8 +149,13 @@ let &t_EI.="\e[1 q"
 "加载插件
 call plug#begin('~/.vim/plugged')
 
+" 加载lua工具库
+
 " 开始菜单
 Plug 'mhinz/vim-startify'
+
+
+Plug 'vim-scripts/keepcase.vim'
 
 """
 " CtrlSF
@@ -179,14 +169,10 @@ nmap <leader>s :%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>
 
 " Set up some handy CtrlSF bindings
 nmap <leader>a :CtrlSF -R ""<Left>
-nmap <leader>A <Plug>CtrlSFCwordPath -W<CR>
+nmap <leader>A <Plug>CtrlSFCwordPath<CR>
 nmap <leader>c :CtrlSFFocus<CR>
 nmap <leader>C :CtrlSFToggle<CR>
 
-" -----------------------------------------------
-" 括号自动环绕
-" -----------------------------------------------
-Plug 'tpope/vim-surround'
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -198,8 +184,8 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 " -----------------------------------------------
 " 多重选择
 " -----------------------------------------------
-Plug 'terryma/vim-multiple-cursors'
-let g:multi_cursor_select_all_word_key = '<C-s>'
+" Plug 'terryma/vim-multiple-cursors'
+" let g:multi_cursor_select_all_word_key = '<C-s>'
 " Default mapping
 " let g:multi_cursor_start_word_key      = '<C-n>'
 " let g:multi_cursor_select_all_word_key = '<A-n>'
@@ -224,7 +210,7 @@ Plug 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 let g:NERDCustomDelimiters = {
-			\ 'javascript': { 'left': '//', 'leftAlt': '/*', 'rightAlt': '*/' },
+			\ 'javascript': { 'left': '//' },
 			\ 'less': { 'left': '/*', 'right': '*/' }
 			\ }
 
@@ -253,7 +239,7 @@ command! ProjectFiles execute 'Files' s:find_git_root()
 
 let $FZF_DEFAULT_COMMAND = 'rg --files --case-sensitive --glob "!.git/*"'
 nnoremap // :BLines!<CR>
-nnoremap ?? :Rg!<CR>
+nnoremap ?? :Ag!<CR>
 " 当前路径PWD找
 nnoremap <leader>p :Files!<CR>
 " 当前项目找
@@ -296,7 +282,8 @@ let g:nerdtree_tabs_open_on_console_startup=1 "在终端启动vim时共享NERDTr
 " -----------------------------------------------
 " COC 语法自动补全
 " -----------------------------------------------
-Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'rafcamlet/coc-nvim-lua'
 
 if has("patch-8.1.1564")
   " Recently vim can merge signcolumn and number column into one
@@ -379,7 +366,7 @@ augroup end
 " nmap <leader>a  <Plug>(coc-codeaction-selected)
 
 " Remap keys for applying codeAction to the current buffer.
-nmap <leader>ac  <Plug>(coc-codeaction)
+" nmap <leader>ac  <Plug>(coc-codeaction)
 " Apply AutoFix to problem on the current line.
 nmap <leader>qf  <Plug>(coc-fix-current)
 
@@ -431,12 +418,30 @@ nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>t
 
+" -----------------------------------------------
+" coc-bookmark
+" -----------------------------------------------
+nmap <Leader>bj <Plug>(coc-bookmark-next)
+nmap <Leader>bk <Plug>(coc-bookmark-prev)
+nmap <Leader>bb :CocCommand bookmark.toggle<CR>
+nmap <Leader>bc :CocCommand bookmark.clearForCurrentFile<CR>
+nmap <Leader>bl :CocList bookmark<CR>
+nmap <Leader>ba :CocCommand annotate
+
+" -----------------------------------------------
+" coc-jest
+" -----------------------------------------------
+nnoremap <leader>te :call CocAction('runCommand', 'jest.fileTest')<CR>
 
 " -----------------------------------------------
 " html xml自动闭合标签
 " -----------------------------------------------
 Plug 'docunext/closetag.vim'
 
+" -----------------------------------------------
+" 括号自动环绕
+" -----------------------------------------------
+Plug 'tpope/vim-surround'
 
 " -----------------------------------------------
 " Git配置"
@@ -476,24 +481,6 @@ function! Vimnote(notetext)
 endfunction
 
 
-" }}}
-"
-
-"Vue语法判断插件
-Plug 'posva/vim-vue'
-"Vue语法判断插件
-augroup vuegroup
-	autocmd!
-	autocmd FileType vue syntax sync fromstart
-	autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript.css
-	autocmd FileType vue inoremap {{ {{  }}<esc>hhi
-	autocmd FileType vue nnoremap <leader>c :set ft=css<cr>
-	autocmd FileType vue nnoremap <leader>h :set ft=html<cr>
-	autocmd FileType vue nnoremap <leader>v :set ft=vue<cr>
-	autocmd FileType vue nnoremap <leader>j :set ft=javascript<cr>
-augroup END
-
-
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#jsx_single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
@@ -521,6 +508,18 @@ function! BufferTemporary()
 	call append(0, lines)
 endfunction
 
+autocmd FileType * vnoremap <buffer> B :call BufferTemporary()<cr>
+
+" 快速添加块包围注释
+function! BufferComment()
+	let line_start = getpos("'<")[1]
+	let line_end = getpos("'>")[1]
+	call append(line_start-1, "// --------------------------")
+	call append(line_end+1, "// -------------------------- End")
+	normal! kw
+	startinsert
+endfunction
+
 "Node
 augroup node
 	autocmd!
@@ -528,8 +527,9 @@ augroup node
 	autocmd FileType javascript nnoremap <buffer> <F5> :!node %<cr>
 	autocmd FileType javascript nnoremap <buffer> <F6> :!mocha %<cr>
 	autocmd FileType javascript nnoremap <buffer> <F7> :call EslintShow()<cr>
-	autocmd FileType javascript vnoremap <buffer> B :call BufferTemporary()<cr>
+	autocmd FileType javascript vnoremap <buffer> ? :<C-u>call BufferComment()<cr>
 augroup END
+
 
 "html
 augroup htmlgroup
@@ -592,11 +592,16 @@ augroup Ctest
 augroup END
 
 "Go
-augroup Goconfig
-	autocmd!
-	autocmd FileType go nnoremap <buffer> <F5> :!go run %<cr>
-	autocmd FileType go iabbrev fpl fmt.Println()
-augroup END
+" 使用coc-go
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+" augroup Goconfig
+"   autocmd!
+"   autocmd FileType go nnoremap <buffer> <leader>r :!go run %<cr>
+"   autocmd FileType go iabbrev fpl fmt.Println()
+"   autocmd FileType go vnoremap <buffer> ; :<C-u>call BufferComment()<cr>
+" augroup END
+" Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+" let g:go_bin_path = "/usr/local/go/bin"
 
 "PYTHON"
 function! PythonShow(python_command)
@@ -678,4 +683,7 @@ except Exception, e:
     print e
 EOF
 endfunction
+	function! DeleteIconId()
+		:%s/\vid\="[^"]+"//g
+	endfunction
 augroup END

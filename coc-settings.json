@@ -2,11 +2,13 @@
   "suggest.noselect": false,
   "suggest.floatEnable": false,
   "signature.target": "echo",
+  "typescript.suggest.enabled": false,
   "coc.preferences.hoverTarget": "echo",
   "coc.preferences.formatOnSaveFiletypes": [
     "javascript",
     "json",
     "javascriptreact",
     "graphql"
-  ]
+  ],
+  "jest.binCommand": "NODE_OPTIONS=--experimental-vm-modules pnpx jest"
 }
