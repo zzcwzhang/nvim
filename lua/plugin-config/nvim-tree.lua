@@ -7,6 +7,12 @@ end
 -- 列表操作快捷键
 local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
+    -- project
+    update_cwd = true,
+    update_focused_file = {
+      enable = true,
+      update_cwd = true,
+    },
     -- 不显示 git 状态图标
     git = {
         enable = false,

@@ -3,14 +3,27 @@ packer.startup(
 function(use)
   -- Packer 可以管理自己本身
   use 'wbthomason/packer.nvim'
-  --------------------- colorschemes --------------------
-  -- tokyonight
+  -- tokyonight 皮肤
   use("folke/tokyonight.nvim")
-  -------------------------------------------------------
-  ---- nvim-tree
+  ---- nvim-tree 侧边目录
   use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
-  -- bufferline
+  -- bufferline 标签页
   use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" }})
+  -- lualine 下边栏
+  use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
+  use("arkav/lualine-lsp-progress")
+  -- 文件快捷查询Ctrl + p
+  use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
+  -- dashboard-nvim
+  use("glepnir/dashboard-nvim")
+  -- project
+  use("ahmedkhalf/project.nvim")
+  -- treesitter
+  use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+  --------------------- LSP --------------------
+  use("williamboman/nvim-lsp-installer")
+  -- Lspconfig
+  use({ "neovim/nvim-lspconfig" })
 end,
 {
   display = {
