@@ -34,9 +34,10 @@ function(use)
   use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
   use("hrsh7th/cmp-path") -- { name = 'path' }
   use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
-
   -- 常见编程语言代码段
   use("rafamadriz/friendly-snippets")
+  -- 代码补全
+  use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
 end,
 {
   display = {
