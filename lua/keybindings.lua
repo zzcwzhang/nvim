@@ -11,8 +11,8 @@ map("i", "jk", "<esc>", opt)
 -- 快速行首行尾
 map("i", "<C-a>", "<ESC>I", opt)
 map("i", "<C-e>", "<ESC>A", opt)
-map("n", "<C-a>", "^", opt)
-map("n", "<C-e>", "$", opt)
+map("n", "H", "^", opt)
+map("n", "L", "$", opt)
 
 -- 窗口移动
 map("n", "<C-J>", "<C-W><C-J>", opt)
@@ -35,9 +35,9 @@ map("n", "<C-d>", "9j", opt)
 
 -- Telescope
 -- 查找文件
-map("n", "<C-p>", ":Telescope find_files<CR>", opt)
+map("n", "<leader>p", ":Telescope find_files<CR>", opt)
 -- 全局搜索
-map("n", "<C-F>", ":Telescope live_grep<CR>", opt)
+map("n", "<leader>f", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>g", ":Telescope git_files<CR>", opt)
 map("n", "<leader>b", ":Telescope buffers<CR>", opt)
 
@@ -69,7 +69,7 @@ map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 -- 关闭
 --"moll/vim-bbye"
-map("n", "<C-w>", ":Bdelete!<CR>", opt)
+map("n", "zz", ":Bdelete!<CR>", opt)
 map("n", "<leader>bl", ":BufferLineCloseRight<CR>", opt)
 map("n", "<leader>bh", ":BufferLineCloseLeft<CR>", opt)
 map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)

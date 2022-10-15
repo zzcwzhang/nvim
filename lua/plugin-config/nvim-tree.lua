@@ -7,6 +7,9 @@ end
 -- 列表操作快捷键
 local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
+    open_on_setup = true,
+    open_on_setup_file = true,
+    open_on_tab = true,
     -- project
     update_cwd = true,
     update_focused_file = {
@@ -51,7 +54,7 @@ nvim_tree.setup({
             -- 首次打开大小适配
             resize_window = true,
             -- 打开文件时关闭
-            quit_on_open = false,
+            quit_on_open = true,
         },
     },
     -- wsl install -g wsl-open
