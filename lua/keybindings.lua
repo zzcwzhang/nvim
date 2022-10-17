@@ -13,6 +13,8 @@ map("i", "<C-a>", "<ESC>I", opt)
 map("i", "<C-e>", "<ESC>A", opt)
 map("n", "H", "^", opt)
 map("n", "L", "$", opt)
+map("v", "H", "^", opt)
+map("v", "L", "$", opt)
 
 -- 窗口移动
 map("n", "<C-J>", "<C-W><C-J>", opt)
