@@ -38,6 +38,12 @@ function(use)
   use("rafamadriz/friendly-snippets")
   -- 代码补全
   use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+  -- 常用图标
+  use("onsails/lspkind-nvim")
+  -- 括号匹配
+  use("nvim-autopairs")
+  -- 注释
+  use("nshen/learn-neovim-lua")
 end,
 {
   display = {
