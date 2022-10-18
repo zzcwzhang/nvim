@@ -114,6 +114,11 @@ _G.packer_plugins = {
     path = "/Users/apple/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
   },
+  ["learn-neovim-lua"] = {
+    loaded = true,
+    path = "/Users/apple/.local/share/nvim/site/pack/packer/start/learn-neovim-lua",
+    url = "https://github.com/nshen/learn-neovim-lua"
+  },
   ["lspkind-nvim"] = {
     loaded = true,
     path = "/Users/apple/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
@@ -133,6 +138,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/apple/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
     url = "https://github.com/jose-elias-alvarez/null-ls.nvim"
+  },
+  ["nvim-autopairs"] = {
+    loaded = true,
+    path = "/Users/apple/.local/share/nvim/site/pack/packer/start/nvim-autopairs",
+    url = "https://github.com/nvim-autopairs"
   },
   ["nvim-cmp"] = {
     loaded = true,
