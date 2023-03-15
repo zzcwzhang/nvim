@@ -15,7 +15,16 @@ packer.startup(
     -- 文件快捷查询Ctrl + p
     use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
     -- dashboard-nvim
-    use("glepnir/dashboard-nvim")
+    use {
+      'glepnir/dashboard-nvim',
+      event = 'VimEnter',
+      config = function()
+        require('dashboard').setup {
+          -- config
+        }
+      end,
+      requires = {'nvim-tree/nvim-web-devicons'}
+    }
     -- project
     use("ahmedkhalf/project.nvim")
     -- treesitter
@@ -43,7 +52,7 @@ packer.startup(
     -- 括号匹配
     use("windwp/nvim-autopairs")
     -- 注释
-    use("nshen/learn-neovim-lua")
+    use "terrortylor/nvim-comment"
   end,
   {
     display = {

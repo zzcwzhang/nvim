@@ -1,9 +1,11 @@
-local status, comment = pcall(require, "nvim_comment")
+local status, nvim_comment = pcall(require, "nvim_comment")
 if not status then
-  vim.notify("没有找到 comment")
+  vim.notify("没有找到 nvim_comment")
 end
 
-comment.setup({
+vim.notify("找到nvim_comment")
+
+nvim_comment.setup({
    -- Linters prefer comment and line to have a space in between markers
   marker_padding = true,
   -- should comment out empty or whitespace only lines

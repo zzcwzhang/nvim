@@ -6,9 +6,10 @@ require("plugins")
 require("keybindings")
 -- 主题设置 （新增）
 require("colorscheme")
--- 插件配置
+-- 插件配置 plugin-config为文件夹.后面为文件名
 require("plugin-config.nvim-tree")
 require("plugin-config.bufferline")
+require("plugin-config.nvim-comment")
 require("plugin-config.lualine")
 require("plugin-config.telescope")
 require("plugin-config.dashboard")
