@@ -4,18 +4,11 @@ if not status then
   return
 end
 
+
 -- 列表操作快捷键
 local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
-    open_on_setup = true,
-    open_on_setup_file = true,
     open_on_tab = true,
-    -- project
-    update_cwd = true,
-    update_focused_file = {
-      enable = true,
-      update_cwd = true,
-    },
     -- 不显示 git 状态图标
     git = {
         enable = false,
@@ -60,10 +53,28 @@ nvim_tree.setup({
     -- wsl install -g wsl-open
     -- https://github.com/4U6U57/wsl-open/
     system_open = {
-        cmd = 'wsl-open', -- mac 直接设置为 open
+        cmd = 'open', -- mac 直接设置为 open
     },
 })
 -- 自动关闭
 vim.cmd([[
   autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]])
+
+local function open_nvim_tree(data)
+
+  -- buffer is a directory
+  local directory = vim.fn.isdirectory(data.file) == 1
+
+  if not directory then
+    return
+  end
+
+  -- change to the directory
+  vim.cmd.cd(data.file)
+
+  -- open the tree
+  require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
