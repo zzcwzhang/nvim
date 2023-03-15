@@ -50,7 +50,10 @@ packer.startup(
     -- 常用图标
     use("onsails/lspkind-nvim")
     -- 括号匹配
-    use("windwp/nvim-autopairs")
+    use {
+      "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+    }
     -- 注释
     use "terrortylor/nvim-comment"
   end,

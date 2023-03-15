@@ -16,12 +16,6 @@ map("n", "L", "$", opt)
 map("v", "H", "^", opt)
 map("v", "L", "$", opt)
 
--- 窗口移动
-map("n", "<C-J>", "<C-W><C-J>", opt)
-map("n", "<C-K>", "<C-W><C-K>", opt)
-map("n", "<C-L>", "<C-W><C-L>", opt)
-map("n", "<C-H>", "<C-W><C-H>", opt)
-
 -- 系统粘贴板
 map("n", "gy", "\"+y", opt)
 map("v", "gy", "\"+y", opt)
