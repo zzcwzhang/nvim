@@ -222,30 +222,50 @@ Plug 'tmhedberg/SimpylFold'
 Plug 'vim-scripts/indentpython.vim'
 
 
-" -----------------------------------------------
-" FZF
-" -----------------------------------------------
+" " -----------------------------------------------
+" " Telescope
+" " -----------------------------------------------
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
-" linux fzf搜索
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+nnoremap <leader>p <cmd>Telescope find_files<cr>
+nnoremap <leader>f <cmd>Telescope live_grep<cr>
+nnoremap <leader>g <cmd>Telescope git_files<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+" -- Telescope
+" -- 查找文件
+" map("n", "<leader>p", ":Telescope find_files<CR>", opt)
+" -- 全局搜索
+" map("n", "<leader>f", ":Telescope live_grep<CR>", opt)
+" map("n", "<leader>g", ":Telescope git_files<CR>", opt)
+" map("n", "<leader>b", ":Telescope buffers<CR>", opt)
 
-" 自动寻找目录根路径
-function! s:find_git_root()
-	echo 'find root'
-  return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-endfunction
-command! ProjectFiles execute 'Files' s:find_git_root()
 
-let $FZF_DEFAULT_COMMAND = 'rg --files --case-sensitive --glob "!.git/*"'
-nnoremap // :BLines!<CR>
-nnoremap ?? :Ag!<CR>
-" 当前路径PWD找
-nnoremap <leader>p :Files!<CR>
-" 当前项目找
-nnoremap <leader>P :GFiles!<CR>
-nnoremap <leader>g :GFiles?<CR>
-nnoremap cc :Commands!<CR>
+
+" " -----------------------------------------------
+" " FZF
+" " -----------------------------------------------
+
+" " linux fzf搜索
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
+
+" " 自动寻找目录根路径
+" function! s:find_git_root()
+"   echo 'find root'
+"   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
+" endfunction
+" command! ProjectFiles execute 'Files' s:find_git_root()
+
+" let $FZF_DEFAULT_COMMAND = 'rg --files --case-sensitive --glob "!.git/*"'
+" nnoremap // :BLines!<CR>
+" nnoremap ?? :Ag!<CR>
+" " 当前路径PWD找
+" nnoremap <leader>p :Files!<CR>
+" " 当前项目找
+" nnoremap <leader>P :GFiles!<CR>
+" nnoremap <leader>g :GFiles?<CR>
+" nnoremap cc :Commands!<CR>
 
 " -----------------------------------------------
 " 文件树
