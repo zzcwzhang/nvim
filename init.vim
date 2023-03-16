@@ -643,7 +643,7 @@ function! EslintShow()
 	call append(0,split(output,'\v\n'))
 endfunction
 
-" emmet
+" emmet 改用coc自带的
 Plug 'mattn/emmet-vim'
 
 " 皮肤

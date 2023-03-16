@@ -10,5 +10,6 @@
     "javascriptreact",
     "graphql"
   ],
-  "jest.binCommand": "NODE_OPTIONS=--experimental-vm-modules pnpx jest"
+  "jest.binCommand": "NODE_OPTIONS=--experimental-vm-modules pnpx jest",
+  "emmet.includeLanguages": { "javascript": "javascriptreact" }
 }
