@@ -11,5 +11,8 @@
     "graphql"
   ],
   "jest.binCommand": "NODE_OPTIONS=--experimental-vm-modules pnpx jest",
-  "emmet.includeLanguages": { "javascript": "javascriptreact" }
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }

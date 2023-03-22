@@ -230,7 +230,7 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
 nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>f <cmd>Telescope live_grep<cr>
-nnoremap <leader>g <cmd>Telescope git_files<cr>
+nnoremap <leader>g <cmd>Telescope git_status<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
 " -- Telescope
 " -- 查找文件
@@ -369,8 +369,8 @@ endfunction
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+" xmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
