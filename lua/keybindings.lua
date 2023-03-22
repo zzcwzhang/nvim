@@ -97,7 +97,11 @@ map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
 -- nvim-tree
 -- alt + m 键打开关闭tree
-map("n", "m", ":NvimTreeToggle<CR>", opt)
+map("n", "mt", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>mn", require("nvim-tree.api").marks.navigate.next)
+map("n", "<leader>mp", require("nvim-tree.api").marks.navigate.prev)
+map("n", "<leader>ms", require("nvim-tree.api").marks.navigate.select)
+
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)
