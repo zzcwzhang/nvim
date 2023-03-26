@@ -198,11 +198,6 @@ autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
 "
 
 " -----------------------------------------------
-" Buffer管理器
-" -----------------------------------------------
- Plug 'jlanzarotta/bufexplorer'
-
-" -----------------------------------------------
 " 代码注释
 " -----------------------------------------------
 Plug 'scrooloose/nerdcommenter'
@@ -232,13 +227,6 @@ nnoremap <leader>p <cmd>Telescope find_files<cr>
 nnoremap <leader>f <cmd>Telescope live_grep<cr>
 nnoremap <leader>g <cmd>Telescope git_status<cr>
 nnoremap <leader>b <cmd>Telescope buffers<cr>
-" -- Telescope
-" -- 查找文件
-" map("n", "<leader>p", ":Telescope find_files<CR>", opt)
-" -- 全局搜索
-" map("n", "<leader>f", ":Telescope live_grep<CR>", opt)
-" map("n", "<leader>g", ":Telescope git_files<CR>", opt)
-" map("n", "<leader>b", ":Telescope buffers<CR>", opt)
 
 
 

@@ -14,5 +14,9 @@
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "typescript.suggestionActions.enabled": false,
+  "typescript.validate.enable": false,
+  "typescript.suggest.autoImports": false,
+  "typescript.suggest.completeFunctionCalls": false
 }
