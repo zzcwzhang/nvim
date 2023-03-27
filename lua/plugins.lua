@@ -58,8 +58,8 @@ packer.startup(
     use "terrortylor/nvim-comment"
     -- GPT
     use({
-  "jackMort/ChatGPT.nvim",
-    config = function()
+      "zzcwzhang/ChatGPT.nvim",
+      config = function()
       require("chatgpt").setup({
         -- optional configuration
       })
