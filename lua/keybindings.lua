@@ -16,6 +16,12 @@ map("n", "L", "$", opt)
 map("v", "H", "^", opt)
 map("v", "L", "$", opt)
 
+-- 切换窗口
+map('n', "<C-h>", "<C-w>h", opt);
+map('n', "<C-l>", "<C-w>l", opt);
+map('n', "<C-j>", "<C-w>j", opt);
+map('n', "<C-k>", "<C-w>k", opt);
+
 -- 系统粘贴板
 map("n", "gy", "\"+y", opt)
 map("v", "gy", "\"+y", opt)
@@ -23,8 +29,6 @@ map("n", "gp", "\"+p", opt)
 map("v", "gp", "\"+p", opt)
 
 -- 上下滚动浏览
-map("n", "<C-j>", "4jzz", opt)
-map("n", "<C-k>", "4kzz", opt)
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "9kzz", opt)
 map("n", "<C-d>", "9jzz", opt)
@@ -86,8 +90,7 @@ pluginKeys.telescopeList = {
 
 -- bufferline
 -- 左右Tab切换
-map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+--
 -- 关闭
 --"moll/vim-bbye"
 -- map("n", "zz", ":Bdelete!<CR>", opt)
@@ -97,11 +100,12 @@ map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
 -- nvim-tree
 -- alt + m 键打开关闭tree
-map("n", "mt", ":NvimTreeToggle<CR>", opt)
+map("n", "m", ":NvimTreeToggle<CR>", opt)
 -- map("n", "<leader>mn", require("nvim-tree.api").marks.navigate.next, opt)
 -- map("n", "<leader>mp", require("nvim-tree.api").marks.navigate.prev, opt)
 -- map("n", "<leader>ms", require("nvim-tree.api").marks.navigate.select, opt)
 
+map("n", "rc", ":lua reload_config()<CR>", opt)
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)

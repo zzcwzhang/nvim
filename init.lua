@@ -19,3 +19,5 @@ require("lsp.setup")
 require("lsp.cmp")
 require("lsp.null-ls")
 require("lsp.ui")
+
+require("function")
