@@ -112,6 +112,11 @@ _G.packer_plugins = {
     path = "/Users/apple/.local/share/nvim/site/pack/packer/opt/dashboard-nvim",
     url = "https://github.com/glepnir/dashboard-nvim"
   },
+  ["emmet-vim"] = {
+    loaded = true,
+    path = "/Users/apple/.local/share/nvim/site/pack/packer/start/emmet-vim",
+    url = "https://github.com/mattn/emmet-vim"
+  },
   ["friendly-snippets"] = {
     loaded = true,
     path = "/Users/apple/.local/share/nvim/site/pack/packer/start/friendly-snippets",
@@ -223,6 +228,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/Users/apple/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-styled-components"] = {
+    loaded = true,
+    path = "/Users/apple/.local/share/nvim/site/pack/packer/start/vim-styled-components",
+    url = "https://github.com/styled-components/vim-styled-components"
   },
   ["vim-vsnip"] = {
     loaded = true,

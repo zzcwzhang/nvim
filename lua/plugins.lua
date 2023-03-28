@@ -1,6 +1,10 @@
 local packer = require('packer')
 packer.startup(
   function(use)
+    -- emmet
+    use 'mattn/emmet-vim'
+    -- styled-components
+    use 'styled-components/vim-styled-components'
     -- GIT
     use 'tpope/vim-fugitive'
     -- Packer 可以管理自己本身
