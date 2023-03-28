@@ -37,6 +37,16 @@ packer.startup(
     use("hrsh7th/nvim-cmp")
     -- snippet 引擎
     use("hrsh7th/vim-vsnip")
+    -- 包围
+    use({
+      "kylechui/nvim-surround",
+      tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+      config = function()
+        require("nvim-surround").setup({
+          -- Configuration here, or leave empty to use defaults
+        })
+      end
+    })
     -- 补全源
     use("hrsh7th/cmp-vsnip")
     use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
