@@ -1,6 +1,8 @@
 local packer = require('packer')
 packer.startup(
   function(use)
+    -- GIT
+    use 'tpope/vim-fugitive'
     -- Packer 可以管理自己本身
     use 'wbthomason/packer.nvim'
     -- tokyonight 皮肤
