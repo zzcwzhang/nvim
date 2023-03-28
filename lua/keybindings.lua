@@ -1,5 +1,5 @@
-vim.g.mapleader=" "
-vim.gmaplocalleader=" "
+vim.g.mapleader=","
+vim.gmaplocalleader=","
 
 local map = vim.api.nvim_set_keymap
 local opt = {noremap = true, silent = true }
