@@ -41,6 +41,9 @@ map("n", "<leader>f", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>g", ":Telescope git_files<CR>", opt)
 map("n", "<leader>b", ":Telescope buffers<CR>", opt)
 
+-- GPT
+map("v", "T", ":<C-u>ChatGPTEditWithInstructions<CR>", opt)
+
 -- 插件快捷键
 local pluginKeys = {}
 

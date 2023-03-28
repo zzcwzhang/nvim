@@ -54,22 +54,24 @@ packer.startup(
       "windwp/nvim-autopairs",
       config = function() require("nvim-autopairs").setup {} end
     }
+    -- GPTUI
+    use "MunifTanjim/nui.nvim"
     -- 注释
     use "terrortylor/nvim-comment"
     -- GPT
-    use({
-      "zzcwzhang/ChatGPT.nvim",
-      config = function()
-      require("chatgpt").setup({
-        -- optional configuration
-      })
-    end,
-    requires = {
-      "MunifTanjim/nui.nvim",
-      "nvim-lua/plenary.nvim",
-      "nvim-telescope/telescope.nvim"
-    }
-})
+--     use({
+--       "zzcwzhang/ChatGPT.nvim",
+--       config = function()
+--       require("chatgpt").setup({
+--         -- optional configuration
+--       })
+--     end,
+--     requires = {
+--       "MunifTanjim/nui.nvim",
+--       "nvim-lua/plenary.nvim",
+--       "nvim-telescope/telescope.nvim"
+--     }
+-- })
   end,
   {
     display = {
