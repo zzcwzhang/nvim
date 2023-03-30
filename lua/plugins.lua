@@ -5,24 +5,24 @@ packer.startup(
     use 'mattn/emmet-vim'
     -- styled-components
     use 'styled-components/vim-styled-components'
-    -- GIT
+    -- GIT 支持大写Gread等等
     use 'tpope/vim-fugitive'
     -- Packer 可以管理自己本身
     use 'wbthomason/packer.nvim'
     -- tokyonight 皮肤
     use("folke/tokyonight.nvim")
-    ---- nvim-tree 侧边目录
+    ---- nvim-tree 侧边目录 g? 可以打开提示
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
-    -- bufferline 标签页
+    -- bufferline 标签页上的状态
     use({ "akinsho/bufferline.nvim", requires = { "kyazdani42/nvim-web-devicons", "moll/vim-bbye" } })
     -- lualine 下边栏
     use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons" } })
     use("arkav/lualine-lsp-progress")
-    -- 文件快捷查询Ctrl + p
+    -- 文件快捷查询p
     use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
-    -- project
+    -- project <leader>fp
     use("ahmedkhalf/project.nvim")
-    -- treesitter
+    -- treesitter 语法高亮
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     --------------------- LSP --------------------
     use "williamboman/mason.nvim"
@@ -61,7 +61,7 @@ packer.startup(
     }
     -- GPTUI
     use "MunifTanjim/nui.nvim"
-    -- 注释
+    -- 注释 使用gcc注释
     use "terrortylor/nvim-comment"
     -- GPT
 --     use({

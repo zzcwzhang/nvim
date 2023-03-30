@@ -34,12 +34,12 @@ map("n", "<C-u>", "9kzz", opt)
 map("n", "<C-d>", "9jzz", opt)
 
 -- Telescope
--- 查找文件
-map("n", "<leader>p", ":Telescope find_files<CR>", opt)
--- 全局搜索
-map("n", "<leader>f", ":Telescope live_grep<CR>", opt)
-map("n", "<leader>g", ":Telescope git_files<CR>", opt)
-map("n", "<leader>b", ":Telescope buffers<CR>", opt)
+map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
+map("n", "<leader>ft", ":Telescope help_tags<CR>", opt)
+map("n", "<leader>fl", ":Telescope live_grep<CR>", opt)
+map("n", "<leader>fg", ":Telescope git_files<CR>", opt)
+map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
+map("n", "<leader>fp", ":Telescope projects<CR>", opt)
 
 -- GPT
 map("v", "T", ":<C-u>ChatGPTEditWithInstructions<CR>", opt)
