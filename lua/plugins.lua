@@ -26,12 +26,38 @@ packer.startup(
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     --------------------- LSP --------------------
     use "williamboman/mason.nvim"
+    use "williamboman/mason-lspconfig.nvim"
     -- Lspconfig
     use({ "neovim/nvim-lspconfig" })
-    -- 补全引擎
-    use("hrsh7th/nvim-cmp")
+
+    -- Installation
     -- snippet 引擎
-    use("hrsh7th/vim-vsnip")
+    use({
+      "L3MON4D3/LuaSnip",
+      -- follow latest release.
+      tag = "v<CurrentMajor>.*",
+      -- install jsregexp (optional!:).
+      run = "make install_jsregexp"
+    })
+    -- 代码补全引擎
+    use {
+      'hrsh7th/nvim-cmp',
+      config = function ()
+        require'cmp'.setup {
+          snippet = {
+            expand = function(args)
+              require'luasnip'.lsp_expand(args.body)
+            end
+          },
+
+          sources = {
+            { name = 'luasnip' },
+            -- more sources
+          },
+        }
+      end
+    }
+    use { 'saadparwaiz1/cmp_luasnip' }
     -- 包围
     use({
       "kylechui/nvim-surround",
@@ -64,19 +90,19 @@ packer.startup(
     -- 注释 使用gcc注释
     use "terrortylor/nvim-comment"
     -- GPT
---     use({
---       "zzcwzhang/ChatGPT.nvim",
---       config = function()
---       require("chatgpt").setup({
---         -- optional configuration
---       })
---     end,
---     requires = {
---       "MunifTanjim/nui.nvim",
---       "nvim-lua/plenary.nvim",
---       "nvim-telescope/telescope.nvim"
---     }
--- })
+    --     use({
+    --       "zzcwzhang/ChatGPT.nvim",
+    --       config = function()
+    --       require("chatgpt").setup({
+    --         -- optional configuration
+    --       })
+    --     end,
+    --     requires = {
+    --       "MunifTanjim/nui.nvim",
+    --       "nvim-lua/plenary.nvim",
+    --       "nvim-telescope/telescope.nvim"
+    --     }
+    -- })
   end,
   {
     display = {
