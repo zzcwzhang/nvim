@@ -5,6 +5,8 @@ packer.startup(
     use 'mattn/emmet-vim'
     -- styled-components
     use 'styled-components/vim-styled-components'
+    -- css color
+    use 'ap/vim-css-color'
     -- GIT 支持大写Gread等等
     use 'tpope/vim-fugitive'
     -- Packer 可以管理自己本身
