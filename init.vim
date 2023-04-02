@@ -223,10 +223,10 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.1' }
 
-nnoremap <leader>p <cmd>Telescope find_files<cr>
-nnoremap <leader>f <cmd>Telescope live_grep<cr>
-nnoremap <leader>g <cmd>Telescope git_status<cr>
-nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fl <cmd>Telescope live_grep<cr>
+nnoremap <leader>fg <cmd>Telescope git_status<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
 
 
 
