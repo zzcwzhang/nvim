@@ -93,6 +93,8 @@ command! ReloadEZ execute "source ~/.zshrc"
 "快速打开.vimrc
 command! Config execute ":vsplit $MYVIMRC"
 
+command! ConfigSSH execute ":vsplit ~/.ssh/config"
+
 "重新加载vimrc
 command! Reload execute "source $MYVIMRC"
 
