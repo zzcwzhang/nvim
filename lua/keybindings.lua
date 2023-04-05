@@ -22,6 +22,10 @@ map('n', "<C-l>", "<C-w>l", opt);
 map('n', "<C-j>", "<C-w>j", opt);
 map('n', "<C-k>", "<C-w>k", opt);
 
+-- 切换tab
+map('n', "<Left>", "gT", opt);
+map('n', "<Right>", "gt", opt);
+
 -- 系统粘贴板
 map("n", "gy", "\"+y", opt)
 map("v", "gy", "\"+y", opt)

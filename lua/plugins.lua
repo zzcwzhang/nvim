@@ -1,6 +1,7 @@
 local packer = require('packer')
 packer.startup(
   function(use)
+    -- dashboard
     -- emmet
     use 'mattn/emmet-vim'
     -- styled-components

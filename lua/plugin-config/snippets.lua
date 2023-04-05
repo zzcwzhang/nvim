@@ -19,21 +19,45 @@ local fmta = require("luasnip.extras.fmt").fmta
 local types = require("luasnip.util.types")
 local conds = require("luasnip.extras.conditions")
 local conds_expand = require("luasnip.extras.conditions.expand")
+local postfix = require "luasnip.extras.postfix".postfix
 
-ls.add_snippets("all", {
-  s("ternary", {
-    -- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
-    i(1, "cond"), t(" ? "), i(2, "then"), t(" : "), i(3, "else")
-  })
-}, {
-    key = "all",
-})
+-- ls.add_snippets("all", {
+--   s("ternary", {
+--     -- equivalent to "${1:cond} ? ${2:then} : ${3:else}"
+--     i(1, "cond"), t(" ? "), i(2, "then"), t(" : "), i(3, "else")
+--   })
+-- }, {
+--     key = "all",
+-- })
 
 
+function capitalizeFirstWord(str)
+  local firstChar = string.sub(str, 1, 1)
+  local rest = string.sub(str, 2)
+  return string.upper(firstChar) .. rest
+end
 
 ls.add_snippets("javascript", {
   s("tri", { t("Wow! Text!") }),
-  s("uM", { t("const ["), i(1), t("] = useMemo()") })
+
+  s("uM", { t("const ["), i(1), t("] = useMemo()") }),
+
+  -- useState
+  postfix("?uS", {
+    f(function(_, parent)
+      local str = parent.snippet.env.POSTFIX_MATCH
+      return "const [" .. str ..", " .. "set" .. capitalizeFirstWord(str) .. "] = useState(" .. str .. ");"
+    end, {}),
+  }),
+
+  -- useRecoilState
+  postfix("?uRS", {
+    f(function(_, parent)
+      local str = parent.snippet.env.POSTFIX_MATCH
+      return "const [" .. str ..", " .. "set" .. capitalizeFirstWord(str) .. "] = useRecoilState(" .. str .. "$);"
+    end, {}),
+  }),
+
 }, {
     key = "javascript",
   })
