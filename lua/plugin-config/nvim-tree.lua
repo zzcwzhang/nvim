@@ -53,7 +53,7 @@ nvim_tree.setup({
       -- 首次打开大小适配
       resize_window = true,
       -- 打开文件时关闭
-      quit_on_open = true,
+      quit_on_open = false,
     },
   },
   -- wsl install -g wsl-open
@@ -62,6 +62,7 @@ nvim_tree.setup({
     cmd = 'open', -- mac 直接设置为 open
   },
 })
+
 -- 自动关闭
 vim.cmd([[
   autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
