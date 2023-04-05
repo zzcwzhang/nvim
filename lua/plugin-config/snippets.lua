@@ -47,6 +47,7 @@ function getFilename(path)
 end
 
 ls.add_snippets("javascript", {
+  s('llg', fmt([[.tap((_v) => console.log("{}", _v))]], { i(1) })),
     -- recoil: atom
   s('atom', fmta([[
   export const <> = atom({

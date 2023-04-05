@@ -8,6 +8,11 @@ end
 -- 列表操作快捷键
 local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
+  -- 过滤文件夹
+  live_filter = {
+    prefix = "[FILTER]: ",
+    always_show_folders = false, -- Turn into false from true by default
+  },
   open_on_tab = true,
   -- 不显示 git 状态图标
   git = {

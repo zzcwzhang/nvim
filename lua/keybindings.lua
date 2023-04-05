@@ -107,11 +107,11 @@ map("n", "<leader>bc", ":BufferLinePickClose<CR>", opt)
 
 -- nvim-tree
 -- alt + m 键打开关闭tree
-map("n", "m", ":NvimTreeToggle<CR>", opt)
+map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 -- map("n", "mb", ':lua require"nvim-tree.api".marks.list()<CR>', opt)
 -- map("n", "<leader>mn", require("nvim-tree.api").marks.navigate.next, opt)
 -- map("n", "<leader>mp", require("nvim-tree.api").marks.navigate.prev, opt)
--- map("n", "<leader>ms", require("nvim-tree.api").marks.navigate.select, opt)
+map("n", "<leader>ms", ':lua require("nvim-tree.api").marks.navigate.select<CR>', opt)
 
 map("n", "rc", ":lua reload_config()<CR>", opt)
 
