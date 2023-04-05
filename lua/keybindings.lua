@@ -41,7 +41,7 @@ map("n", "<C-d>", "9jzz", opt)
 map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
 map("n", "<leader>ft", ":Telescope help_tags<CR>", opt)
 map("n", "<leader>fl", ":Telescope live_grep<CR>", opt)
-map("n", "<leader>fg", ":Telescope git_files<CR>", opt)
+map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<leader>fp", ":Telescope projects<CR>", opt)
 
