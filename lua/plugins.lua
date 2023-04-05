@@ -42,24 +42,17 @@ packer.startup(
       run = "make install_jsregexp"
     })
     -- 代码补全引擎
-    use {
-      'hrsh7th/nvim-cmp',
-      config = function ()
-        require'cmp'.setup {
-          snippet = {
-            expand = function(args)
-              require'luasnip'.lsp_expand(args.body)
-            end
-          },
-
-          sources = {
-            { name = 'luasnip' },
-            -- more sources
-          },
-        }
-      end
-    }
+    use { 'hrsh7th/nvim-cmp' }
     use { 'saadparwaiz1/cmp_luasnip' }
+    -- 补全源
+    use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
+    use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
+    use("hrsh7th/cmp-path") -- { name = 'path' }
+    use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
+    -- 代码补全
+    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
+    -- 常用图标
+    use("onsails/lspkind-nvim")
     -- 包围
     use({
       "kylechui/nvim-surround",
@@ -70,18 +63,6 @@ packer.startup(
         })
       end
     })
-    -- 补全源
-    use("hrsh7th/cmp-vsnip")
-    use("hrsh7th/cmp-nvim-lsp") -- { name = nvim_lsp }
-    use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
-    use("hrsh7th/cmp-path") -- { name = 'path' }
-    use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
-    -- 常见编程语言代码段
-    use("rafamadriz/friendly-snippets")
-    -- 代码补全
-    use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
-    -- 常用图标
-    use("onsails/lspkind-nvim")
     -- 括号匹配
     use {
       "windwp/nvim-autopairs",
