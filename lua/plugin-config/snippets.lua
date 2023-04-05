@@ -77,7 +77,7 @@ ls.add_snippets("javascript", {
   ]], { i(1) })),
 
   -- import
-  s('imp', fmt([[import {2} from "{1}"]], { 
+  s('imp', fmt([[import {2} from '{1}';]], { 
     i(1),
     f(function(args)
       return getFilename(args[1][1] or "")
@@ -145,7 +145,7 @@ const Wrapper = styled.div`
   postfix("?URV", {
     f(function(_, parent)
       local str = parent.snippet.env.POSTFIX_MATCH
-      return "const " .. str .. " = useRecoilState(" .. str .. "$);"
+      return "const " .. str .. " = useRecoilValue(" .. str .. "$);"
     end, {}),
   }),
   -- console.log
