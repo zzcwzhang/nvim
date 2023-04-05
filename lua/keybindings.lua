@@ -45,6 +45,7 @@ map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
 map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 map("n", "<leader>fp", ":Telescope projects<CR>", opt)
 
+
 -- GPT
 map("v", "T", ":<C-u>ChatGPTEditWithInstructions<CR>", opt)
 

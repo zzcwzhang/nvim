@@ -53,7 +53,7 @@ ls.add_snippets("javascript", {
   export const <> = atom({
     key: `${BASE_FIX}<>`,
     default: <>
-  )};
+  });
   ]], { i(1), rep(1), i(2, 'null') })),
 
     -- styled-components
