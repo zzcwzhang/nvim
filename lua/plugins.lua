@@ -18,7 +18,9 @@ packer.startup(
     -- Packer 可以管理自己本身
     use 'wbthomason/packer.nvim'
     -- tokyonight 皮肤
-    use("folke/tokyonight.nvim")
+    use "folke/tokyonight.nvim"
+    -- icon
+    use "kyazdani42/nvim-web-devicons"
     ---- nvim-tree 侧边目录 g? 可以打开提示
     use({ "kyazdani42/nvim-tree.lua", requires = "kyazdani42/nvim-web-devicons" })
     -- bufferline 标签页上的状态
@@ -78,6 +80,9 @@ packer.startup(
     use "MunifTanjim/nui.nvim"
     -- 注释 使用gcc注释
     use "terrortylor/nvim-comment"
+
+    -- 支持jsx注释
+    use 'JoosepAlviste/nvim-ts-context-commentstring'
     -- GPT
     --     use({
     --       "zzcwzhang/ChatGPT.nvim",
