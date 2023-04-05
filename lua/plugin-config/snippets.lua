@@ -38,28 +38,80 @@ function capitalizeFirstWord(str)
 end
 
 ls.add_snippets("javascript", {
-  s("tri", { t("Wow! Text!") }),
+  s('im_', t({"import _ from 'lodash';"})),
+  -- useMemo
+  s("uM", fmt([[
+  const <> = useMemo({
+    <>
+  }, []);
+  ]], {
+      i(1), i(2),
+    }, {
+      delimiters = "<>"
+    })),
+  -- useCallback
+  s("uC", fmt([[
+  const <> = useCallback({
+    <>
+  }, []);
+  ]], {
+      i(1),i(2),
+    }, {
+      delimiters = "<>"
+    })),
+  -- fast create page
+  s("shook", fmt([[
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-  s("uM", { t("const ["), i(1), t("] = useMemo()") }),
+export default function []() {
+  return (
+    <Wrapper>
+      []
+    </Wrapper>
+  )
+}
 
+const Wrapper = styled.div`
+  font-size: 20;
+`;
+  ]], {
+      i(1),
+      rep(1)
+    }, {
+      delimiters = "[]"
+    })),
   -- useState
-  postfix("?uS", {
+  postfix("?US", {
     f(function(_, parent)
       local str = parent.snippet.env.POSTFIX_MATCH
       return "const [" .. str ..", " .. "set" .. capitalizeFirstWord(str) .. "] = useState(" .. str .. ");"
     end, {}),
   }),
-
   -- useRecoilState
-  postfix("?uRS", {
+  postfix("?URS", {
     f(function(_, parent)
       local str = parent.snippet.env.POSTFIX_MATCH
       return "const [" .. str ..", " .. "set" .. capitalizeFirstWord(str) .. "] = useRecoilState(" .. str .. "$);"
     end, {}),
   }),
+  -- useRecoilValue
+  postfix("?URV", {
+    f(function(_, parent)
+      local str = parent.snippet.env.POSTFIX_MATCH
+      return "const " .. str .. " = useRecoilState(" .. str .. "$);"
+    end, {}),
+  }),
+  -- console.log
+  postfix("?L", {
+    f(function(_, parent)
+      local str = parent.snippet.env.POSTFIX_MATCH
+      return "console.log('" .. str .. ":', ".. str ..");"
+    end, {}),
+  }),
 
 }, {
     key = "javascript",
-  })
+})
 
 require("luasnip.loaders.from_lua").lazy_load({ include = { "all", "javascript" } })

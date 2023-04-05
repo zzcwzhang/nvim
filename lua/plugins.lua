@@ -2,6 +2,11 @@ local packer = require('packer')
 packer.startup(
   function(use)
     -- dashboard
+    use {
+      'glepnir/dashboard-nvim',
+      event = 'VimEnter',
+      requires = {'nvim-tree/nvim-web-devicons'}
+    }
     -- emmet
     use 'mattn/emmet-vim'
     -- styled-components
