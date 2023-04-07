@@ -157,8 +157,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'mhinz/vim-startify'
 
 
-Plug 'vim-scripts/keepcase.vim'
-
 """
 " CtrlSF
 """
@@ -231,32 +229,6 @@ nnoremap <leader>fg <cmd>Telescope git_status<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 
 
-
-" " -----------------------------------------------
-" " FZF
-" " -----------------------------------------------
-
-" " linux fzf搜索
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
-
-" " 自动寻找目录根路径
-" function! s:find_git_root()
-"   echo 'find root'
-"   return system('git rev-parse --show-toplevel 2> /dev/null')[:-2]
-" endfunction
-" command! ProjectFiles execute 'Files' s:find_git_root()
-
-" let $FZF_DEFAULT_COMMAND = 'rg --files --case-sensitive --glob "!.git/*"'
-" nnoremap // :BLines!<CR>
-" nnoremap ?? :Ag!<CR>
-" " 当前路径PWD找
-" nnoremap <leader>p :Files!<CR>
-" " 当前项目找
-" nnoremap <leader>P :GFiles!<CR>
-" nnoremap <leader>g :GFiles?<CR>
-" nnoremap cc :Commands!<CR>
-
 " -----------------------------------------------
 " 文件树
 " -----------------------------------------------
@@ -279,15 +251,6 @@ let g:NERDTreeGitStatusIndicatorMapCustom = {
 let NERDTreeIgnore=['\.pyc$', '\~$', '\.swp'] "忽略以下文件
 let NERDTreeShowLinenumbers = 1 "设置行号
 let g:nerdtree_tabs_open_on_console_startup=1 "在终端启动vim时共享NERDTree
-
-"代码片段
-" 使用新版的代码片段引擎
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
-" Optional:
-" let g:UltiSnipsExpandTrigger="<c-space>"
-" let g:UltiSnipsJumpForwardTrigger="<c-space>"
-" let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " -----------------------------------------------
 " COC 语法自动补全
