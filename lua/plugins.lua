@@ -31,6 +31,12 @@ packer.startup(
     -- 文件快捷查询p
     use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
     -- project <leader>fp
+    use {
+      "aznhe21/actions-preview.nvim",
+      config = function()
+        vim.keymap.set({ "v", "n" }, "gf", require("actions-preview").code_actions)
+      end,
+    }
     use("ahmedkhalf/project.nvim")
     -- treesitter 语法高亮
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
@@ -57,6 +63,11 @@ packer.startup(
     use("hrsh7th/cmp-buffer") -- { name = 'buffer' },
     use("hrsh7th/cmp-path") -- { name = 'path' }
     use("hrsh7th/cmp-cmdline") -- { name = 'cmdline' }
+    -- trouble
+    use {
+      "folke/trouble.nvim",
+      requires = "nvim-tree/nvim-web-devicons",
+    }
     -- 代码补全
     use({ "jose-elias-alvarez/null-ls.nvim", requires = "nvim-lua/plenary.nvim" })
     -- 常用图标

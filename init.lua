@@ -17,6 +17,7 @@ require("plugin-config.nvim-treesitter")
 require('plugin-config.chatgpt');
 require('plugin-config.dashboard');
 require('plugin-config.snippets');
+-- require('plugin-config.mason');
 require("lsp.setup")
 require("lsp.cmp")
 require("lsp.null-ls")

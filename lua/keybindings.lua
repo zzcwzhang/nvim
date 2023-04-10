@@ -23,8 +23,8 @@ map('n', "<C-j>", "<C-w>j", opt);
 map('n', "<C-k>", "<C-w>k", opt);
 
 -- 切换tab
-map('n', "<Left>", "gT", opt);
-map('n', "<Right>", "gt", opt);
+map('n', "<Left>", ":BufferLineCyclePrev<CR>", opt);
+map('n', "<Right>", ":BufferLineCycleNext<CR>", opt);
 
 -- 系统粘贴板
 map("n", "gy", "\"+y", opt)
@@ -48,6 +48,15 @@ map("n", "<leader>fp", ":Telescope projects<CR>", opt)
 
 -- GPT
 map("v", "T", ":<C-u>ChatGPTEditWithInstructions<CR>", opt)
+
+
+-- trouble
+map("n", "<leader>xx", "<cmd>TroubleToggle<cr>", opt)
+map("n", "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", opt)
+map("n", "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", opt)
+map("n", "<leader>xl", "<cmd>TroubleToggle loclist<cr>", opt)
+map("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", opt)
+map("n", "gR", "<cmd>TroubleToggle lsp_references<cr>", opt)
 
 -- 插件快捷键
 local pluginKeys = {}
@@ -142,25 +151,4 @@ pluginKeys.mapLSP = function(mapbuf)
   -- mapbuf('n', '<space>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opt)
 end
 
--- 列表快捷键
-pluginKeys.nvimTreeList = {
-  -- 打开文件或文件夹
-  { key = {"<CR>", "o", "<2-LeftMouse>"}, action = "edit" },
-  -- 分屏打开文件
-  { key = "v", action = "vsplit" },
-  { key = "h", action = "split" },
-  -- 显示隐藏文件
-  { key = "i", action = "toggle_custom" }, -- 对应 filters 中的 custom (node_modules)
-  { key = ".", action = "toggle_dotfiles" }, -- Hide (dotfiles)
-  -- 文件操作
-  { key = "<F5>", action = "refresh" },
-  { key = "a", action = "create" },
-  { key = "d", action = "remove" },
-  { key = "r", action = "rename" },
-  { key = "x", action = "cut" },
-  { key = "c", action = "copy" },
-  { key = "p", action = "paste" },
-  { key = "s", action = "system_open" },
-}
 return pluginKeys
-
