@@ -17,26 +17,27 @@ lsp_defaults.capabilities = vim.tbl_deep_extend(
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {
-    'tsserver',
-    'eslint',
-    'html',
-    'cssls'
-  }
+  -- ensure_installed = {
+  --   'tsserver',
+  --   'lua',
+  --   'eslint',
+  --   'html',
+  --   'cssls'
+  -- }
 })
 
-require('mason-lspconfig').setup_handlers({
-  function(server)
-    lspconfig[server].setup({})
-  end,
-  ['tsserver'] = function()
-    lspconfig.tsserver.setup({
-      settings = {
-        completions = {
-          completeFunctionCalls = true
-        }
-      }
-    })
-  end
-})
-
+-- require('mason-lspconfig').setup_handlers({
+--   function(server)
+--     lspconfig[server].setup({})
+--   end,
+--   ['tsserver'] = function()
+--     lspconfig.tsserver.setup({
+--       settings = {
+--         completions = {
+--           completeFunctionCalls = true
+--         }
+--       }
+--     })
+--   end
+-- })
+--

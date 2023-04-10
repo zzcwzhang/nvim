@@ -122,6 +122,7 @@ map("n", "<leader>m", ":NvimTreeToggle<CR>", opt)
 map("n", "<leader>ms", ':lua require("nvim-tree.api").marks.navigate.select<CR>', opt)
 
 map("n", "rc", ":lua reload_config()<CR>", opt)
+map("n", "rr", ":luafile %<CR>", opt)
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)

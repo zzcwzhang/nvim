@@ -7,6 +7,7 @@ packer.startup(
       event = 'VimEnter',
       requires = {'nvim-tree/nvim-web-devicons'}
     }
+    use 'nvim-lua/plenary.nvim'
     -- emmet
     use 'mattn/emmet-vim'
     -- styled-components
