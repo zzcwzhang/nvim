@@ -32,6 +32,7 @@ defaultMapping["<S-Tab>"] = cmp.mapping(function(fallback)
   end
 end, { "i", "s" })
 
+
 cmp.setup({
   -- 指定 snippet 引擎
   snippet = {
