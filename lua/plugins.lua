@@ -30,14 +30,14 @@ packer.startup(
     use("arkav/lualine-lsp-progress")
     -- 文件快捷查询p
     use { 'nvim-telescope/telescope.nvim', requires = { "nvim-lua/plenary.nvim" } }
-    -- project <leader>fp
     use {
-      "aznhe21/actions-preview.nvim",
-      config = function()
-        vim.keymap.set({ "v", "n" }, "gf", require("actions-preview").code_actions)
-      end,
+      "nvim-telescope/telescope-file-browser.nvim",
+      requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
-    use("ahmedkhalf/project.nvim")
+    use { "nvim-telescope/telescope-file-browser.nvim", }
+    use { "nvim-telescope/telescope-project.nvim", }
+    -- project <leader>fp
+    -- use("ahmedkhalf/project.nvim")
     -- treesitter 语法高亮
     use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
     --------------------- LSP --------------------

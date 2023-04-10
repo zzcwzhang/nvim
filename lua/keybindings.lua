@@ -39,12 +39,10 @@ map("n", "<C-d>", "9jzz", opt)
 
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
-map("n", "<leader>ft", ":Telescope help_tags<CR>", opt)
-map("n", "<leader>fl", ":Telescope live_grep<CR>", opt)
+map("n", "<leader>fc", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
-map("n", "<leader>fb", ":Telescope buffers<CR>", opt)
-map("n", "<leader>fp", ":Telescope projects<CR>", opt)
-
+map("n", "<leader>fp", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opt)
+map("n", "<leader>fb", ":lua require'telescope'.extensions.project.project{}<CR>", opt)
 
 -- GPT
 map("v", "T", ":<C-u>ChatGPTEditWithInstructions<CR>", opt)

@@ -12,7 +12,7 @@ require("plugin-config.bufferline")
 require("plugin-config.nvim-comment")
 require("plugin-config.lualine")
 require("plugin-config.telescope")
-require("plugin-config.project")
+-- require("plugin-config.project")
 require("plugin-config.nvim-treesitter")
 require('plugin-config.chatgpt');
 require('plugin-config.dashboard');

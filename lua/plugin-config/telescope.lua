@@ -22,3 +22,6 @@ telescope.setup({
      -- 扩展插件配置
   },
 })
+
+telescope.load_extension "file_browser"
+telescope.load_extension('project')
