@@ -34,7 +34,6 @@ packer.startup(
       "nvim-telescope/telescope-file-browser.nvim",
       requires = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" }
     }
-    use { "nvim-telescope/telescope-file-browser.nvim", }
     use { "nvim-telescope/telescope-project.nvim", }
     -- project <leader>fp
     -- use("ahmedkhalf/project.nvim")
@@ -55,6 +54,13 @@ packer.startup(
       -- install jsregexp (optional!:).
       run = "make install_jsregexp"
     })
+    -- 代码命令
+    use {
+      "aznhe21/actions-preview.nvim",
+      config = function()
+        vim.keymap.set({ "v", "n" }, "gf", require("actions-preview").code_actions)
+      end,
+    }
     -- 代码补全引擎
     use { 'hrsh7th/nvim-cmp' }
     use { 'saadparwaiz1/cmp_luasnip' }
