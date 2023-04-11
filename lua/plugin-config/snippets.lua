@@ -53,16 +53,30 @@ ls.add_snippets("javascript", {
 
 	-- recoil: atom
 	s(
-		"atom",
-		fmta(
-			[[
+		"r$",
+		c(1, {
+			fmta(
+				[[
   export const <> = atom({
     key: `${BASE_FIX}<>`,
     default: <>
   });
   ]],
-			{ i(1), rep(1), i(2, "null") }
-		)
+				{ i(1), rep(1), i(2, "null") }
+			),
+			fmt(
+				[[
+  export const [] = selector({
+    key: `${BASE_FIX}[]`,
+    get:  ({ get }) => {
+      []
+    }
+  });
+  ]],
+				{ i(1), rep(1), i(2, "null") },
+				{ delimiters = "[]" }
+			),
+		})
 	),
 
 	-- styled-components
