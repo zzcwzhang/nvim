@@ -38,6 +38,15 @@ local add_bookmark = function(node)
 	print("Project added: " .. __path)
 end
 
+-- CD
+local function change_root_to_file(node)
+	local uv = require("luv")
+	local file_path = node["absolute_path"]
+	local api = require("nvim-tree.api")
+	uv.chdir(file_path)
+	api.tree.change_root(file_path)
+end
+
 -- 列表操作快捷键
 -- local list_keys = require('keybindings').nvimTreeList
 nvim_tree.setup({
@@ -49,15 +58,15 @@ nvim_tree.setup({
 	open_on_tab = true,
 	-- 不显示 git 状态图标
 	git = {
-		enable = false,
+		enable = true,
 	},
 	-- project plugin 需要这样设置
-	sync_root_with_cwd = true,
-	respect_buf_cwd = true,
-	update_focused_file = {
-		enable = true,
-		update_root = true,
-	},
+	-- sync_root_with_cwd = true,
+	-- respect_buf_cwd = true,
+	-- update_focused_file = {
+	-- 	enable = true,
+	-- 	update_root = false,
+	-- },
 	-- 隐藏 .文件 和 node_modules 文件夹
 	filters = {
 		dotfiles = true,
@@ -74,7 +83,8 @@ nvim_tree.setup({
 		mappings = {
 			custom_only = false,
 			list = {
-				{ key = "<C-b>", action_cb = add_bookmark },
+				{ key = "<C-b>", action_cb = add_bookmark, description = "add bookmark" },
+				{ key = "<C-c>", action_cb = change_root_to_file },
 			},
 		},
 		-- 不显示行数
