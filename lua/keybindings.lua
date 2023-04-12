@@ -25,6 +25,9 @@ map("n", "<C-k>", "<C-w>k", opt)
 map("n", "<Left>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<Right>", ":BufferLineCycleNext<CR>", opt)
 
+-- 关闭
+map("n", "ZZ", ":bd<CR>", opt);
+
 -- 系统粘贴板
 map("n", "gy", '"+y', opt)
 map("v", "gy", '"+y', opt)
