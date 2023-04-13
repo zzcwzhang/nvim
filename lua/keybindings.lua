@@ -44,10 +44,12 @@ map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
 map("n", "<leader>fh", ":Telescope pickers<CR>", opt)
 map("n", "<leader>fc", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
-map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
 map("n", "<leader>fm", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opt)
 
+-- 查找当前关闭下的单词
 map("n", "<leader>a", ":lua Search_word()<CR>", opt)
+-- 书签
+map("n", "<leader>p", ":lua require'telescope'.extensions.project.project{}<CR>", opt)
 
 -- GPT
 map("v", "T", ":<C-u>ChatGPTEditWithInstructions<CR>", opt)
