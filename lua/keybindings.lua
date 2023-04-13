@@ -44,8 +44,10 @@ map("n", "<leader>ff", ":Telescope find_files<CR>", opt)
 map("n", "<leader>fh", ":Telescope pickers<CR>", opt)
 map("n", "<leader>fc", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
+map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
 map("n", "<leader>fm", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opt)
-map("n", "<leader>p", ":lua require'telescope'.extensions.project.project{}<CR>", opt)
+
+map("n", "<leader>a", ":lua Search_word()<CR>", opt)
 
 -- GPT
 map("v", "T", ":<C-u>ChatGPTEditWithInstructions<CR>", opt)
@@ -121,7 +123,7 @@ map("n", "<leader>m", ":NvimTreeFindFile<CR>", opt)
 -- map("n", "<leader>mn", require("nvim-tree.api").marks.navigate.next, opt)
 -- map("n", "<leader>mp", require("nvim-tree.api").marks.navigate.prev, opt)
 
-map("n", "rc", ":lua reload_config()<CR>", opt)
+map("n", "rc", ":lua Reload_config()<CR>", opt)
 map("n", "rr", ":luafile %<CR>", opt)
 
 -- lsp 回调函数快捷键设置

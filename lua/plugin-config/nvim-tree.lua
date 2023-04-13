@@ -96,6 +96,7 @@ nvim_tree.setup({
 				{ key = "<C-v>", action_cb = api.node.open.vertical, desc = "垂直打开" },
 				{ key = "<C-h>", action_cb = api.node.open.horizontal, desc = "水平代开" },
 				{ key = "<C-d>", action_cb = api.fs.remove, desc = "删除" },
+				{ key = "<C-a>", action_cb = api.fs.create, desc = "创建" },
 				{ key = "-", action_cb = api.tree.change_root_to_parent, desc = "回到上级" },
 				{ key = "E", action_cb = api.node.open.expand_all, desc = "全部展开" },
 				{ key = "o", action_cb = api.node.open.edit, desc = "进入或编辑" },
