@@ -84,25 +84,40 @@ nvim_tree.setup({
 		side = "left",
 		-- 隐藏根目录
 		hide_root_folder = false,
-		-- 自定义列表中快捷键
-		--  vim.keymap.set('n', 'J',     api.node.navigate.sibling.last,        opts('Last Sibling'))
-		-- vim.keymap.set('n', 'K',     api.node.navigate.sibling.first,       opts('First Sibling'))
+
+		-- 原则
+		-- 无改动的，则可以直接单键
+		-- 会影响文件修改，则需要使用组合键
 		mappings = {
 			custom_only = true,
 			list = {
+				-- 有风险操作
 				{ key = "<C-b>", action_cb = add_bookmark, desc = "添加到书签(只能目录)" },
-				{ key = "<C-c>", action_cb = change_root_to_file, desc = "cwd" },
-				{ key = "<C-t>", action_cb = api.node.open.ta, desc = "新标签页" },
-				{ key = "<C-v>", action_cb = api.node.open.vertical, desc = "垂直打开" },
-				{ key = "<C-h>", action_cb = api.node.open.horizontal, desc = "水平代开" },
 				{ key = "<C-d>", action_cb = api.fs.remove, desc = "删除" },
 				{ key = "<C-a>", action_cb = api.fs.create, desc = "创建" },
-				{ key = "-", action_cb = api.tree.change_root_to_parent, desc = "回到上级" },
-				{ key = "E", action_cb = api.node.open.expand_all, desc = "全部展开" },
+				{ key = "<C-o>", action_cb = api.node.run.system, desc = "系统打开" },
+				{ key = "<C-r>", action_cb = api.fs.rename, desc = "重命名" },
+				{ key = "<C-x>", action_cb = api.fs.cut, desc = "剪切" },
+				{ key = "<C-c>", action_cb = api.fs.copy.node, desc = "复制" },
+				{ key = "<C-p>", action_cb = api.fs.paste, desc = "粘贴" },
+				{ key = "<C-r>", action_cb = api.fs.reload, desc = "刷新目录" },
+
+				-- 设置根目录
+				{ key = "cd", action_cb = change_root_to_file, desc = "cwd" },
+				-- 打开方式
+				{ key = "t", action_cb = api.node.open.ta, desc = "新标签页" },
+				{ key = "v", action_cb = api.node.open.vertical, desc = "垂直打开" },
+				{ key = "s", action_cb = api.node.open.horizontal, desc = "水平代开" },
 				{ key = "o", action_cb = api.node.open.edit, desc = "进入或编辑" },
-				{ key = "g?", action_cb = api.node.open.toggle_help, desc = "帮助" },
+
+				-- 目录操作
+				{ key = "u", action_cb = api.tree.change_root_to_parent, desc = "回到上级" },
+				{ key = "E", action_cb = api.node.open.expand_all, desc = "全部展开" },
 				{ key = "J", action_cb = api.node.navigate.sibling.last, desc = "移动到最后" },
 				{ key = "K", action_cb = api.node.navigate.sibling.first, desc = "移动到最后" },
+
+				-- 帮助
+				{ key = "?", action_cb = api.tree.toggle_help, desc = "帮助" },
 			},
 		},
 		-- 不显示行数
