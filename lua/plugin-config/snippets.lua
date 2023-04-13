@@ -81,7 +81,7 @@ ls.add_snippets("javascript", {
 
 	-- styled-components
 	s(
-		"ctom",
+		"coms",
 		fmt(
 			[[
   const {} = styled.div`

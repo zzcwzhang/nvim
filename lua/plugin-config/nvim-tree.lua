@@ -4,6 +4,12 @@ if not status then
 	return
 end
 
+local api = require("nvim-tree.api")
+
+local function opts(desc)
+	return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
+end
+
 local project_utils = require("telescope._extensions.project.utils")
 local action_state = require("telescope.actions.state")
 -- 添加书签
@@ -42,7 +48,6 @@ end
 local function change_root_to_file(node)
 	local uv = require("luv")
 	local file_path = node["absolute_path"]
-	local api = require("nvim-tree.api")
 	uv.chdir(file_path)
 	api.tree.change_root(file_path)
 end
@@ -80,11 +85,23 @@ nvim_tree.setup({
 		-- 隐藏根目录
 		hide_root_folder = false,
 		-- 自定义列表中快捷键
+		--  vim.keymap.set('n', 'J',     api.node.navigate.sibling.last,        opts('Last Sibling'))
+		-- vim.keymap.set('n', 'K',     api.node.navigate.sibling.first,       opts('First Sibling'))
 		mappings = {
-			custom_only = false,
+			custom_only = true,
 			list = {
-				{ key = "<C-b>", action_cb = add_bookmark, description = "add bookmark" },
-				{ key = "<C-c>", action_cb = change_root_to_file },
+				{ key = "<C-b>", action_cb = add_bookmark, desc = "添加到书签(只能目录)" },
+				{ key = "<C-c>", action_cb = change_root_to_file, desc = "cwd" },
+				{ key = "<C-t>", action_cb = api.node.open.ta, desc = "新标签页" },
+				{ key = "<C-v>", action_cb = api.node.open.vertical, desc = "垂直打开" },
+				{ key = "<C-h>", action_cb = api.node.open.horizontal, desc = "水平代开" },
+				{ key = "<C-d>", action_cb = api.fs.remove, desc = "删除" },
+				{ key = "-", action_cb = api.tree.change_root_to_parent, desc = "回到上级" },
+				{ key = "E", action_cb = api.node.open.expand_all, desc = "全部展开" },
+				{ key = "o", action_cb = api.node.open.edit, desc = "进入或编辑" },
+				{ key = "g?", action_cb = api.node.open.toggle_help, desc = "帮助" },
+				{ key = "J", action_cb = api.node.navigate.sibling.last, desc = "移动到最后" },
+				{ key = "K", action_cb = api.node.navigate.sibling.first, desc = "移动到最后" },
 			},
 		},
 		-- 不显示行数
@@ -112,20 +129,3 @@ nvim_tree.setup({
 vim.cmd([[
   autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
 ]])
-
-local function open_nvim_tree(data)
-	-- buffer is a directory
-	-- local directory = vim.fn.isdirectory(data.file) == 1
-	--
-	-- if not directory then
-	--   return
-	-- end
-	--
-	-- -- change to the directory
-	-- vim.cmd.cd(data.file)
-	--
-	-- open the tree
-	require("nvim-tree.api").tree.open()
-end
-
--- vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
