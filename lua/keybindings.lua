@@ -34,6 +34,9 @@ map("v", "gy", '"+y', opt)
 map("n", "gp", '"+p', opt)
 map("v", "gp", '"+p', opt)
 
+-- git
+map("n", "<leader>gd", ":Gdiffsplit<CR>", opt)
+
 -- 上下滚动浏览
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
 map("n", "<C-u>", "9kzz", opt)

@@ -106,8 +106,8 @@ nvim_tree.setup({
 				{ key = "cd", action_cb = change_root_to_file, desc = "cwd" },
 				-- 打开方式
 				{ key = "t", action_cb = api.node.open.ta, desc = "新标签页" },
-				{ key = "v", action_cb = api.node.open.vertical, desc = "垂直打开" },
-				{ key = "s", action_cb = api.node.open.horizontal, desc = "水平代开" },
+				{ key = "l", action_cb = api.node.open.vertical, desc = "垂直打开" },
+				{ key = "h", action_cb = api.node.open.horizontal, desc = "水平代开" },
 				{ key = "o", action_cb = api.node.open.edit, desc = "进入或编辑" },
 
 				-- 目录操作
