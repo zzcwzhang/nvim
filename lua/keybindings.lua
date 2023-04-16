@@ -39,8 +39,8 @@ map("n", "<leader>gd", ":Gdiffsplit<CR>", opt)
 
 -- 上下滚动浏览
 -- ctrl u / ctrl + d  只移动9行，默认移动半屏
-map("n", "<C-u>", "9kzz", opt)
-map("n", "<C-d>", "9jzz", opt)
+map("n", "<C-u>", "<C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y><C-Y>", opt)
+map("n", "<C-d>", "<C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E><C-E>", opt)
 
 -- Telescope
 map("n", "<leader>ff", ":Telescope find_files<CR>", opt)

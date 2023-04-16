@@ -32,13 +32,13 @@ ls.add_snippets("all", {
 	key = "all",
 })
 
-function capitalizeFirstWord(str)
+local function capitalizeFirstWord(str)
 	local firstChar = string.sub(str, 1, 1)
 	local rest = string.sub(str, 2)
 	return string.upper(firstChar) .. rest
 end
 
-function getFilename(path)
+local function getFilename(path)
 	local name = string.match(path, ".*/([^/]+)")
 	if name == nil then
 		return ""
@@ -188,6 +188,13 @@ const Wrapper = styled.div`
 			}
 		)
 	),
+	-- selector get
+	postfix("?SG", {
+		f(function(_, parent)
+			local str = parent.snippet.env.POSTFIX_MATCH
+			return "const " .. str .. " = get(" .. str .. "$);"
+		end, {}),
+	}),
 	-- useState
 	postfix("?US", {
 		f(function(_, parent)

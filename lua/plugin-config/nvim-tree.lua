@@ -100,7 +100,6 @@ nvim_tree.setup({
 				{ key = "<C-x>", action_cb = api.fs.cut, desc = "剪切" },
 				{ key = "<C-c>", action_cb = api.fs.copy.node, desc = "复制" },
 				{ key = "<C-p>", action_cb = api.fs.paste, desc = "粘贴" },
-				{ key = "<C-r>", action_cb = api.fs.reload, desc = "刷新目录" },
 
 				-- 设置根目录
 				{ key = "cd", action_cb = change_root_to_file, desc = "cwd" },
@@ -115,6 +114,7 @@ nvim_tree.setup({
 				{ key = "E", action_cb = api.node.open.expand_all, desc = "全部展开" },
 				{ key = "J", action_cb = api.node.navigate.sibling.last, desc = "移动到最后" },
 				{ key = "K", action_cb = api.node.navigate.sibling.first, desc = "移动到最后" },
+				{ key = "r", action_cb = api.fs.reload, desc = "刷新目录" },
 
 				-- 帮助
 				{ key = "?", action_cb = api.tree.toggle_help, desc = "帮助" },
