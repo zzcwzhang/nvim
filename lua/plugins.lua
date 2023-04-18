@@ -101,6 +101,9 @@ packer.startup(function(use)
 	-- 注释 使用gcc注释
 	use("terrortylor/nvim-comment")
 
+	-- 平滑滚动
+	use("karb94/neoscroll.nvim")
+
 	-- 支持jsx注释
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 	-- GPT

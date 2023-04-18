@@ -51,9 +51,42 @@ end
 ls.add_snippets("javascript", {
 	s("llg", fmt([[.tap((_v) => console.log("{}", _v))]], { i(1) })),
 
+	-- recoil: selector
+	s(
+		"selector>",
+		c(1, {
+			fmta(
+				[[
+  export const [] = selector({
+    key: `${BASE_FIX}[]`,
+    get: ({ get }) => {
+      []
+      return null;
+    }
+  });
+  ]],
+				{ i(1), rep(1), i(2) },
+				{ delimiters = "[]" }
+			),
+			fmt(
+				[[
+  export const [] = selectorFamily({
+    key: `${BASE_FIX}[]`,
+    get: ([]) => ({ get }) => {
+      []
+      return null;
+    }
+  });
+  ]],
+				{ i(1), rep(1), i(2, "value"), i(3, "") },
+				{ delimiters = "[]" }
+			),
+		})
+	),
+
 	-- recoil: atom
 	s(
-		"r$",
+		"atom>",
 		c(1, {
 			fmta(
 				[[
@@ -66,12 +99,9 @@ ls.add_snippets("javascript", {
 			),
 			fmt(
 				[[
-  export const [] = selector({
+  export const [] = atomFamily({
     key: `${BASE_FIX}[]`,
-    get:  ({ get }) => {
-      []
-    }
-  });
+    default: []
   ]],
 				{ i(1), rep(1), i(2, "null") },
 				{ delimiters = "[]" }
@@ -187,6 +217,19 @@ const Wrapper = styled.div`
 				delimiters = "[]",
 			}
 		)
+	),
+	postfix(
+		"?CS",
+		c(1, {
+			f(function(_, parent)
+				local str = parent.snippet.env.POSTFIX_MATCH
+				return "const " .. str .. " = snapshot.getLoadable(" .. str .. "$).contents;"
+			end, {}),
+			f(function(_, parent)
+				local str = parent.snippet.env.POSTFIX_MATCH
+				return "const " .. str .. " = await snapshot.getPromise(" .. str .. "$);"
+			end, {}),
+		})
 	),
 	-- selector get
 	postfix("?SG", {

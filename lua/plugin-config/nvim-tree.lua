@@ -114,7 +114,9 @@ nvim_tree.setup({
 				{ key = "E", action_cb = api.node.open.expand_all, desc = "全部展开" },
 				{ key = "J", action_cb = api.node.navigate.sibling.last, desc = "移动到最后" },
 				{ key = "K", action_cb = api.node.navigate.sibling.first, desc = "移动到最后" },
-				{ key = "r", action_cb = api.fs.reload, desc = "刷新目录" },
+				{ key = "R", action_cb = api.fs.reload, desc = "刷新目录" },
+				{ key = "I", action_cb = api.tree.toggle_hidden_filter, desc = "显示隐藏文件" },
+				{ key = "x", action_cb = api.tree.collapse_all, desc = "折叠目录" },
 
 				-- 帮助
 				{ key = "?", action_cb = api.tree.toggle_help, desc = "帮助" },

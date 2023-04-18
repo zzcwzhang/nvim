@@ -23,3 +23,6 @@ require("lsp.cmp")
 require("lsp.null-ls")
 require("lsp.ui")
 require("function")
+
+-- 平滑滚动
+require("neoscroll").setup()
