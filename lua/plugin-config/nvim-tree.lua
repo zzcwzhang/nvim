@@ -96,6 +96,22 @@ local function on_attach(bufnr)
 		api.fs.paste()
 	end, opts("复制"))
 
+	vim.keymap.set("n", "ff", function()
+		local node = api.tree.get_node_under_cursor()
+		local file_path = node["absolute_path"]
+		require("telescope.builtin").find_files({
+			cwd = file_path,
+		})
+	end, opts("在当前目录检索文件"))
+
+	vim.keymap.set("n", "fc", function()
+		local node = api.tree.get_node_under_cursor()
+		local file_path = node["absolute_path"]
+		require("telescope.builtin").live_grep({
+			cwd = file_path,
+		})
+	end, opts("在当前目录检索内容"))
+
 	vim.keymap.set("n", "cd", function()
 		local node = api.tree.get_node_under_cursor()
 		change_root_to_file(node)
