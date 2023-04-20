@@ -42,7 +42,6 @@ packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
 	use("nvim-treesitter/nvim-treesitter-context")
-	use({ "romgrk/nvim-treesitter-context" })
 	--------------------- LSP --------------------
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
