@@ -143,13 +143,20 @@ ls.add_snippets("javascript", {
 	),
 
 	-- import
+	-- s(
+	-- 	"imp",
+	-- 	fmt([[import {2} from '{1}';]], {
+	-- 		i(1),
+	-- 		f(function(args)
+	-- 			return getFilename(args[1][1] or "")
+	-- 		end, { 1 }),
+	-- 	})
+	-- ),
 	s(
 		"imp",
 		fmt([[import {2} from '{1}';]], {
 			i(1),
-			f(function(args)
-				return getFilename(args[1][1] or "")
-			end, { 1 }),
+			i(2),
 		})
 	),
 	s("im_", t({ "import _ from 'lodash';" })),
@@ -158,8 +165,8 @@ ls.add_snippets("javascript", {
 		"uM",
 		fmt(
 			[[
-  const <> = useMemo({
-    <>
+  const !@ = useMemo(() => {
+    !@
   }, []);
   ]],
 			{
@@ -167,7 +174,7 @@ ls.add_snippets("javascript", {
 				i(2),
 			},
 			{
-				delimiters = "<>",
+				delimiters = "!@",
 			}
 		)
 	),
@@ -176,8 +183,8 @@ ls.add_snippets("javascript", {
 		"uC",
 		fmt(
 			[[
-  const <> = useCallback({
-    <>
+  const !@ = useCallback(() => {
+    !@
   }, []);
   ]],
 			{
@@ -185,7 +192,7 @@ ls.add_snippets("javascript", {
 				i(2),
 			},
 			{
-				delimiters = "<>",
+				delimiters = "!@",
 			}
 		)
 	),
@@ -206,7 +213,7 @@ export default function []() {
 }
 
 const Wrapper = styled.div`
-  font-size: 20;
+  font-size: 20px;
 `;
   ]],
 			{
@@ -219,7 +226,7 @@ const Wrapper = styled.div`
 		)
 	),
 	postfix(
-		"?CS",
+		"$snapshot",
 		c(1, {
 			f(function(_, parent)
 				local str = parent.snippet.env.POSTFIX_MATCH
@@ -232,7 +239,7 @@ const Wrapper = styled.div`
 		})
 	),
 	-- selector get
-	postfix("?SG", {
+	postfix("$get", {
 		f(function(_, parent)
 			local str = parent.snippet.env.POSTFIX_MATCH
 			return "const " .. str .. " = get(" .. str .. "$);"
@@ -246,7 +253,7 @@ const Wrapper = styled.div`
 		end, {}),
 	}),
 	-- useRecoilState
-	postfix("?URS", {
+	postfix("$URS", {
 		f(function(_, parent)
 			local str = parent.snippet.env.POSTFIX_MATCH
 			return "const ["
@@ -260,7 +267,7 @@ const Wrapper = styled.div`
 		end, {}),
 	}),
 	-- useRecoilValue
-	postfix("?URV", {
+	postfix("$URV", {
 		f(function(_, parent)
 			local str = parent.snippet.env.POSTFIX_MATCH
 			return "const " .. str .. " = useRecoilValue(" .. str .. "$);"

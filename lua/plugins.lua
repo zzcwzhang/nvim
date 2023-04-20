@@ -40,6 +40,9 @@ packer.startup(function(use)
 	-- use("ahmedkhalf/project.nvim")
 	-- treesitter 语法高亮
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use({ "nvim-treesitter/nvim-treesitter-textobjects" })
+	use("nvim-treesitter/nvim-treesitter-context")
+	use({ "romgrk/nvim-treesitter-context" })
 	--------------------- LSP --------------------
 	use("williamboman/mason.nvim")
 	use("williamboman/mason-lspconfig.nvim")
@@ -102,7 +105,7 @@ packer.startup(function(use)
 	use("terrortylor/nvim-comment")
 
 	-- 平滑滚动
-	use("karb94/neoscroll.nvim")
+	-- use("karb94/neoscroll.nvim")
 
 	-- 支持jsx注释
 	use("JoosepAlviste/nvim-ts-context-commentstring")

@@ -25,4 +25,4 @@ require("lsp.ui")
 require("function")
 
 -- 平滑滚动
-require("neoscroll").setup()
+-- require("neoscroll").setup()

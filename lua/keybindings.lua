@@ -44,6 +44,15 @@ map("n", "<leader>fc", ":Telescope live_grep<CR>", opt)
 map("n", "<leader>fg", ":Telescope git_status<CR>", opt)
 map("n", "<leader>fm", ":Telescope file_browser path=%:p:h select_buffer=true<CR>", opt)
 
+-- function Find_files_from_root()
+-- 	local uv = require("luv")
+-- 	local cwd = uv.cwd()
+-- 	print("cwd" .. cwd)
+-- 	require("telescope.builtin").find_files({
+-- 		cwd = uv.cwd(),
+-- 	})
+-- end
+
 -- 查找当前关闭下的单词
 map("n", "<leader>a", ":lua Search_word()<CR>", opt)
 -- 书签
