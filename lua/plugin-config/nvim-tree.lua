@@ -153,6 +153,10 @@ local function on_attach(bufnr)
 		api.tree.toggle_hidden_filter()
 	end, opts("显示隐藏文件"))
 
+	vim.keymap.set("n", "R", function()
+		api.tree.reload()
+	end, opts("折叠目录"))
+
 	vim.keymap.set("n", "x", function()
 		api.tree.collapse_all()
 	end, opts("折叠目录"))

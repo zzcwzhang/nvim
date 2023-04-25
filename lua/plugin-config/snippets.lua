@@ -102,6 +102,7 @@ ls.add_snippets("javascript", {
   export const [] = atomFamily({
     key: `${BASE_FIX}[]`,
     default: []
+  });
   ]],
 				{ i(1), rep(1), i(2, "null") },
 				{ delimiters = "[]" }
