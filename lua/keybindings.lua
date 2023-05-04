@@ -162,9 +162,9 @@ pluginKeys.mapLSP = function(mapbuf)
 end
 
 -- 代码片段 snapshot
-map("i", "<C-n>", "<Plug>luasnip-next-choice", {})
-map("s", "<C-n>", "<Plug>luasnip-next-choice", {})
-map("i", "<C-p>", "<Plug>luasnip-prev-choice", {})
-map("s", "<C-p>", "<Plug>luasnip-prev-choice", {})
+map("i", "<Tab>", "<Plug>luasnip-next-choice", {})
+map("s", "<Tab>", "<Plug>luasnip-next-choice", {})
+map("i", "<S-Tab>", "<Plug>luasnip-prev-choice", {})
+map("s", "<S-Tab>", "<Plug>luasnip-prev-choice", {})
 
 return pluginKeys
