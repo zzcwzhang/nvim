@@ -1,7 +1,5 @@
-lua版的nvim
+lua 版的 nvim
 
-# Todo list 
-- Git support
+# Todo list
+
 - ZZ close all window
-- Project must open a file, I just want see tree
-- auto Periit

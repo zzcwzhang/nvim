@@ -144,35 +144,49 @@ ls.add_snippets("javascript", {
 	),
 
 	-- import
-	-- s(
-	-- 	"imp",
-	-- 	fmt([[import {2} from '{1}';]], {
-	-- 		i(1),
-	-- 		f(function(args)
-	-- 			return getFilename(args[1][1] or "")
-	-- 		end, { 1 }),
-	-- 	})
-	-- ),
 	s(
 		"imp",
 		fmt([[import {2} from '{1}';]], {
 			i(1),
-			i(2),
+			f(function(args)
+				return getFilename(args[1][1] or "")
+			end, { 1 }),
 		})
 	),
+	-- s(
+	-- 	"imp",
+	-- 	fmt([[import {2} from '{1}';]], {
+	-- 		i(1),
+	-- 		i(2),
+	-- 	})
+	-- ),
+	--
 	s("im_", t({ "import _ from 'lodash';" })),
 	-- useMemo
+	s(
+		"uE",
+		fmt(
+			[[
+  useEffect(() => {
+    !@
+  }, []);
+  ]],
+			{ i(1) },
+			{
+				delimiters = "!@",
+			}
+		)
+	),
 	s(
 		"uM",
 		fmt(
 			[[
   const !@ = useMemo(() => {
-    !@
+    
   }, []);
   ]],
 			{
 				i(1),
-				i(2),
 			},
 			{
 				delimiters = "!@",
@@ -185,12 +199,11 @@ ls.add_snippets("javascript", {
 		fmt(
 			[[
   const !@ = useCallback(() => {
-    !@
+
   }, []);
   ]],
 			{
 				i(1),
-				i(2),
 			},
 			{
 				delimiters = "!@",
@@ -208,7 +221,6 @@ import styled from 'styled-components';
 export default function []() {
   return (
     <Wrapper>
-      []
     </Wrapper>
   )
 }
@@ -219,7 +231,6 @@ const Wrapper = styled.div`
   ]],
 			{
 				i(1),
-				rep(1),
 			},
 			{
 				delimiters = "[]",
@@ -276,10 +287,20 @@ const Wrapper = styled.div`
 	}),
 	-- console.log
 	postfix("?L", {
-		f(function(_, parent)
-			local str = parent.snippet.env.POSTFIX_MATCH
-			return "console.log('" .. str .. ":', " .. str .. ");"
-		end, {}),
+		c(1, {
+			f(function(_, parent)
+				local str = parent.snippet.env.POSTFIX_MATCH
+				return "console.log('" .. str .. ":', " .. str .. ");"
+			end, {}),
+			f(function(_, parent)
+				local str = parent.snippet.env.POSTFIX_MATCH
+				return "console.log({ " .. str .. " });"
+			end, {}),
+			f(function(_, parent)
+				local str = parent.snippet.env.POSTFIX_MATCH
+				return "console.log('" .. str .. ":', JSON.stringify(" .. str .. ", null, 2));"
+			end, {}),
+		}),
 	}),
 }, {
 	key = "javascript",

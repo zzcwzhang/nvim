@@ -10,3 +10,7 @@ function Search_word()
 	})
 	print("ook")
 end
+
+function ConfigSSH()
+	vim.cmd("edit /Users/apple/.ssh/config")
+end

@@ -24,6 +24,7 @@ require("lsp.setup")
 require("lsp.null-ls")
 require("lsp.ui")
 require("function")
+require("custom_command")
 
 -- 平滑滚动
 -- require("neoscroll").setup()

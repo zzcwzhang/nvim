@@ -151,6 +151,7 @@ local function on_attach(bufnr)
 
 	vim.keymap.set("n", "I", function()
 		api.tree.toggle_hidden_filter()
+		api.tree.toggle_gitignore_filter()
 	end, opts("显示隐藏文件"))
 
 	vim.keymap.set("n", "R", function()
