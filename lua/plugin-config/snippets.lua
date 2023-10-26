@@ -125,6 +125,21 @@ ls.add_snippets("javascript", {
 
 	-- display: grid
 	s(
+		"df",
+		fmt(
+			[[
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: jlex-start;
+  align-content: flex-start;
+  {}
+  ]],
+			{ i(1) }
+		)
+	),
+
+	-- display: grid
+	s(
 		"dg",
 		fmt(
 			[[
@@ -144,22 +159,22 @@ ls.add_snippets("javascript", {
 	),
 
 	-- import
-	s(
-		"imp",
-		fmt([[import {2} from '{1}';]], {
-			i(1),
-			f(function(args)
-				return getFilename(args[1][1] or "")
-			end, { 1 }),
-		})
-	),
 	-- s(
 	-- 	"imp",
 	-- 	fmt([[import {2} from '{1}';]], {
 	-- 		i(1),
-	-- 		i(2),
+	-- 		f(function(args)
+	-- 			return getFilename(args[1][1] or "")
+	-- 		end, { 1 }),
 	-- 	})
 	-- ),
+	s(
+		"imp",
+		fmt([[import {2} from '{1}';]], {
+			i(1),
+			i(2),
+		})
+	),
 	--
 	s("im_", t({ "import _ from 'lodash';" })),
 	-- useMemo
@@ -207,6 +222,44 @@ ls.add_snippets("javascript", {
 			},
 			{
 				delimiters = "!@",
+			}
+		)
+	),
+	-- fast create action
+	s(
+		"ahook",
+		fmt(
+			[[
+import { useState } from 'react';
+import { post } from 'shared/utils/api/ajax';
+import { useRecoilCallback } from 'recoil';
+
+export default function useSome() {
+  const [fetching, setFetching] = useState(false);
+
+  const ^1_ = useRecoilCallback(({ set, snapshot }) => async (params) => {
+    if (fetching) {
+      return;
+    }
+
+    setFetching(true);
+    try {
+      const result = await post('url');
+    } catch (error) {
+      return '未知错误';
+    } finally {
+      setFetching(false);
+    }
+  });
+
+  return [^1_, fetching];
+}
+      ]],
+			{
+				i(1),
+			},
+			{
+				delimiters = "^_",
 			}
 		)
 	),
@@ -261,7 +314,7 @@ const Wrapper = styled.div`
 	postfix("?US", {
 		f(function(_, parent)
 			local str = parent.snippet.env.POSTFIX_MATCH
-			return "const [" .. str .. ", " .. "set" .. capitalizeFirstWord(str) .. "] = useState(" .. str .. ");"
+			return "const [" .. str .. ", " .. "set" .. capitalizeFirstWord(str) .. "] = useState();"
 		end, {}),
 	}),
 	-- useRecoilState

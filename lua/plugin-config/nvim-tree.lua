@@ -5,6 +5,7 @@ if not status then
 end
 
 local api = require("nvim-tree.api")
+local marks = require("nvim-tree.marks")
 
 local project_utils = require("telescope._extensions.project.utils")
 -- local action_state = require("telescope.actions.state")
@@ -121,6 +122,14 @@ local function on_attach(bufnr)
 		api.node.open.tab()
 	end, opts("新标签打开"))
 
+	vim.keymap.set("n", "m", function()
+		api.marks.toggle()
+	end, opts("标记"))
+
+	vim.keymap.set("n", "M", function()
+		api.marks.list()
+	end, opts("标记"))
+
 	vim.keymap.set("n", "l", function()
 		api.node.open.vertical()
 	end, opts("垂直打开"))
@@ -156,11 +165,15 @@ local function on_attach(bufnr)
 
 	vim.keymap.set("n", "R", function()
 		api.tree.reload()
-	end, opts("折叠目录"))
+	end, opts("刷新目录"))
 
 	vim.keymap.set("n", "x", function()
+		api.node.navigate.parent_close()
+	end, opts("折叠当前目录"))
+
+	vim.keymap.set("n", "X", function()
 		api.tree.collapse_all()
-	end, opts("折叠目录"))
+	end, opts("折叠全部目录"))
 
 	vim.keymap.set("n", "?", function()
 		api.tree.toggle_help()
@@ -198,8 +211,6 @@ nvim_tree.setup({
 		width = 34,
 		-- 也可以 'right'
 		side = "left",
-		-- 隐藏根目录
-		hide_root_folder = false,
 
 		-- 原则
 		-- 无改动的，则可以直接单键

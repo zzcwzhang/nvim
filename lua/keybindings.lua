@@ -132,6 +132,7 @@ map("n", "<leader>m", ":NvimTreeFindFile<CR>", opt)
 -- map("n", "<leader>mn", require("nvim-tree.api").marks.navigate.next, opt)
 -- map("n", "<leader>mp", require("nvim-tree.api").marks.navigate.prev, opt)
 
+-- 保存当前配置
 map("n", "rc", ":lua Reload_config()<CR>", opt)
 map("n", "rr", ":luafile %<CR>", opt)
 
