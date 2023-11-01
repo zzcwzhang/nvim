@@ -130,7 +130,7 @@ ls.add_snippets("javascript", {
 			[[
   display: flex;
   flex-flow: row wrap;
-  justify-content: jlex-start;
+  justify-content: flex-start;
   align-content: flex-start;
   {}
   ]],
@@ -222,6 +222,30 @@ ls.add_snippets("javascript", {
 			},
 			{
 				delimiters = "!@",
+			}
+		)
+	),
+	s(
+		"mhook",
+		fmt(
+			[[
+import { View } from '@tarojs/components';
+
+export default function !1|() {
+  return (
+    <View className="index">
+      <View className="w-96 shadow rounded container">
+        <View className="text-[#acc855] p-3 bg-blue-100">Hello !1|</View>
+      </View>
+    </View>
+  );
+}
+      ]],
+			{
+				i(1),
+			},
+			{
+				delimiters = "!|",
 			}
 		)
 	),

@@ -81,3 +81,11 @@ vim.o.showmode = false
 
 -- 将$也设置为单词的一部分，recoil要使用
 vim.opt.iskeyword:append({ "$" })
+
+vim.g.user_emmet_settings = {
+	jsx_classNotation = "className",
+	pug_classNotation = "className",
+	_ = {
+		class = "className",
+	},
+}
