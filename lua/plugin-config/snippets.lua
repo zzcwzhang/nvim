@@ -287,6 +287,24 @@ export default function useSome() {
 			}
 		)
 	),
+
+	s("twd", fmt([[<div className={classNames('[]')}>text</div>]], { i(1) }, { delimiters = "[]" })),
+	s(
+		"twc",
+		fmt(
+			[[
+import classNames from 'classnames';
+
+export default function [1]() {
+  return <div className={classNames('text-lg')}>Hello World</div>;
+}
+  ]],
+			{ i(1) },
+			{
+				delimiters = "[]",
+			}
+		)
+	),
 	-- fast create page
 	s(
 		"shook",

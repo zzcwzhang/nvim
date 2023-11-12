@@ -133,8 +133,6 @@ map("n", "<leader>m", ":NvimTreeFindFile<CR>", opt)
 -- map("n", "<leader>mp", require("nvim-tree.api").marks.navigate.prev, opt)
 
 -- 保存当前配置
-map("n", "rc", ":lua Reload_config()<CR>", opt)
-map("n", "rr", ":luafile %<CR>", opt)
 
 -- lsp 回调函数快捷键设置
 pluginKeys.mapLSP = function(mapbuf)

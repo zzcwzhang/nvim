@@ -18,7 +18,6 @@ require("plugin-config.chatgpt")
 require("plugin-config.dashboard")
 require("plugin-config.snippets")
 require("plugin-config.mason")
-require("plugin-config.emmet")
 -- require("lsp.setup")
 require("lsp.cmp")
 require("lsp.setup")
@@ -26,6 +25,6 @@ require("lsp.null-ls")
 require("lsp.ui")
 require("function")
 require("custom_command")
-
 -- 平滑滚动
 -- require("neoscroll").setup()
+--
